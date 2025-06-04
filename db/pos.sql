@@ -32,7 +32,7 @@ CREATE TABLE `product` (
   `Name` int(40) NOT NULL,
   `StockQuantity` int(4) NOT NULL,
   `Category` enum('Pharmacy','Food','Hygiene','') NOT NULL,
-  `Image` blob NOT NULL,
+  `Image` blob,
   `Price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -127,3 +127,30 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Mock data for table `user`
+--
+INSERT INTO `user` (`UserId`, `Name`, `Role`, `Password`, `Username`) VALUES
+  (1, 'Mohamad Al-tamari', 'Manager', 'admin', 'admin'),
+  (2, 'Bilal Cashier', 'Cashier', 'user', 'user');
+--
+-- Mock data for table `product`
+--
+INSERT INTO `product` (`ProductId`, `Name`, `StockQuantity`, `Category`, `Image`, `Price`) VALUES
+  (1, 'Aspirin', 100, 'Pharmacy', NULL, 5.99),
+  (2, 'Bread', 50, 'Food', NULL, 2.49),
+  (3, 'Soap', 75, 'Hygiene', NULL, 1.99);
+--
+-- Mock data for table `sale`
+--
+INSERT INTO `sale` (`SaleId`, `UserId`, `CreatedAt`, `TotalPrice`, `PaymentMethod`) VALUES
+  (1, 2, '2025-06-05 10:00:00', 8.48, 'Cash'),
+  (2, 1, '2025-06-05 11:00:00', 7.98, 'Credit');
+--
+-- Mock data for table `saleproduct`
+--
+INSERT INTO `saleproduct` (`SaleId`, `ProductId`, `Quantity`) VALUES
+  (1, 1, 1),
+  (1, 2, 1),
+  (2, 3, 4);
+
