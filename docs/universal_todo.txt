@@ -1,0 +1,93 @@
+
+
+### PAGES/SCENES ###
+@@GLOBAL SCENES:
+1- SIDEBAR SCENE
+	1.1-(MNGR_ONLY) --> DASHBOARD
+	1.2-(MNGR_ONLY) --> MANAGE PRODUCTS
+	1.3-(MNGR_ONLY) --> MANAGE SALES
+	1.4-(MNGR_ONLY) --> VIEW SALES STATS
+	1.5-(MNGR_ONLY) --> MANAGE USERS
+	1.6-			--> MAKE SALE
+	1.7-			--> CHECK CASH
+	1.8				--> تسجيل الخروج
+	UI[] //
+	FUNCTIONALITY [] //
+@@
+2- LOGIN SCENE
+	UI[] //
+	FUNCTIONALITY [] //
+####MANAGER SCENES:
+@@
+3-DASHBOARD
+	-inventory stats
+	-sales stats
+	-employee stats
+	-quick action (hamza will do it)
+	UI[] //
+	FUNCTIONALITY [] //
+@@
+4-MANAGE PRODUCTS
+	-add product
+	-edit product details
+	-delete product
+	UI[] //
+	FUNCTIONALITY [] //
+@@
+5-MANAGE SALES
+	-edit sale details
+	-delete sale (I love tax fraud)
+	UI[] //
+	FUNCTIONALITY [] //
+@@
+6-VIEW SALES STATS
+	-option to export as csv(excel)
+	UI[] //
+	FUNCTIONALITY [] //
+@@
+7- MANAGE USERS
+	-add users
+	-edit user details
+	-delete user
+	UI[] //
+	FUNCTIONALITY [] //
+##CASHIER SCENES:
+@@
+8-MAKE SALE
+	-PRINT INVOICE (stick in alert/popup?)
+	-scan barcode
+	UI[] //
+	FUNCTIONALITY [] //
+9-CHECK CASH
+	-exemption for first 50jds as per money_admin(shishani)
+	UI[] //
+	FUNCTIONALITY [] //
+### DB SCHEMA ###
+@@
+USER:
+	-Id int (PK)
+	-Name varchar(40)
+	-Role enum ("Manager","Cashier")
+	-Pwd varchar(16)
+	-UsrName varchar(16)
+@@
+SALE:
+	-Id int (PK)
+	-UsrId int (FK)
+	-CreatedAtTime datetime
+	-TotalPrice	flaot
+	-PaymentMethod enum("Cash","Credit")
+@@
+PRODUCT:
+	-Id (PK) int
+	-Name varchar(40)
+	-StockQuantity int (4)
+	-Category enum("pharmacy","Food","Hygiene")
+	-Image binary_large_object(blob)
+	-Price float
+@@
+SaleProducts
+	-SaleID int (FK)
+	-ProductBarcode (FK)
+	-Quantity int(4)
+
