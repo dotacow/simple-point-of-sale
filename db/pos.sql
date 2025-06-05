@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2025 at 11:11 PM
+-- Generation Time: Jun 05, 2025 at 09:31 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,12 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `product` (
   `ProductId` int(11) NOT NULL,
-  `Name` int(40) NOT NULL,
+  `Name` varchar(40) NOT NULL,
   `StockQuantity` int(4) NOT NULL,
   `Category` enum('Pharmacy','Food','Hygiene','') NOT NULL,
-  `Image` blob,
+  `Image` blob DEFAULT NULL,
   `Price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ProductId`, `Name`, `StockQuantity`, `Category`, `Image`, `Price`) VALUES
+(1, '0', 100, 'Pharmacy', NULL, 5.99),
+(2, '0', 50, 'Food', NULL, 2.49),
+(3, '0', 75, 'Hygiene', NULL, 1.99);
 
 -- --------------------------------------------------------
 
@@ -50,6 +59,14 @@ CREATE TABLE `sale` (
   `PaymentMethod` enum('Cash','Credit') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`SaleId`, `UserId`, `CreatedAt`, `TotalPrice`, `PaymentMethod`) VALUES
+(1, 2, '2025-06-05 10:00:00', 8.48, 'Cash'),
+(2, 1, '2025-06-05 11:00:00', 7.98, 'Credit');
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +78,15 @@ CREATE TABLE `saleproduct` (
   `ProductId` int(11) NOT NULL,
   `Quantity` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `saleproduct`
+--
+
+INSERT INTO `saleproduct` (`SaleId`, `ProductId`, `Quantity`) VALUES
+(1, 1, 1),
+(1, 2, 1),
+(2, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -75,6 +101,14 @@ CREATE TABLE `user` (
   `Password` varchar(16) NOT NULL,
   `Username` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`UserId`, `Name`, `Role`, `Password`, `Username`) VALUES
+(1, 'Mohamad Al-tamari', 'Manager', 'admin', 'admin'),
+(2, 'Bilal Cashier', 'Cashier', 'user', 'user');
 
 --
 -- Indexes for dumped tables
@@ -127,30 +161,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
---
--- Mock data for table `user`
---
-INSERT INTO `user` (`UserId`, `Name`, `Role`, `Password`, `Username`) VALUES
-  (1, 'Mohamad Al-tamari', 'Manager', 'admin', 'admin'),
-  (2, 'Bilal Cashier', 'Cashier', 'user', 'user');
---
--- Mock data for table `product`
---
-INSERT INTO `product` (`ProductId`, `Name`, `StockQuantity`, `Category`, `Image`, `Price`) VALUES
-  (1, 'Aspirin', 100, 'Pharmacy', NULL, 5.99),
-  (2, 'Bread', 50, 'Food', NULL, 2.49),
-  (3, 'Soap', 75, 'Hygiene', NULL, 1.99);
---
--- Mock data for table `sale`
---
-INSERT INTO `sale` (`SaleId`, `UserId`, `CreatedAt`, `TotalPrice`, `PaymentMethod`) VALUES
-  (1, 2, '2025-06-05 10:00:00', 8.48, 'Cash'),
-  (2, 1, '2025-06-05 11:00:00', 7.98, 'Credit');
---
--- Mock data for table `saleproduct`
---  
-INSERT INTO `saleproduct` (`SaleId`, `ProductId`, `Quantity`) VALUES
-  (1, 1, 1),
-  (1, 2, 1),
-  (2, 3, 4);
-
