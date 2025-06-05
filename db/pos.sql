@@ -148,7 +148,7 @@ INSERT INTO `sale` (`SaleId`, `UserId`, `CreatedAt`, `TotalPrice`, `PaymentMetho
   (2, 1, '2025-06-05 11:00:00', 7.98, 'Credit');
 --
 -- Mock data for table `saleproduct`
---
+--  
 INSERT INTO `saleproduct` (`SaleId`, `ProductId`, `Quantity`) VALUES
   (1, 1, 1),
   (1, 2, 1),
