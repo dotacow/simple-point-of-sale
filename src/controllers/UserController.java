@@ -96,7 +96,12 @@ public class UserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return users;
     }
+    public static boolean authenticate(String username, String password)
+    {
+        //TODO: actual auth
+        return username.equals("admin") && password.equals("admin");
+    }
+
 }
