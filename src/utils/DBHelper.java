@@ -16,8 +16,14 @@ public class DBHelper {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    public static Connection connect() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    public static Connection connect() {
+        try {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            System.out.println("Failed to connect to database.");
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
