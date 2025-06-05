@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
- */
+
 package main;
 
 import javafx.application.Application;
@@ -16,20 +13,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
 /**
  *
  * @author dotacow
  */
-public class PosSystem extends Application {
-
+public class Main extends Application
+{
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-
+        btn.setOnAction(new EventHandler<ActionEvent>()
+        {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
