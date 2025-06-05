@@ -18,11 +18,12 @@ import views.ProductView;
  *
  * @author dotacow
  */
+import views.globalScenes.LoginView;
 public class Main extends Application
 {
     @Override
     public void start(Stage primaryStage) {
-        new ProductView().start(primaryStage);
+        new LoginView().start(primaryStage);
     }
 
     /**
