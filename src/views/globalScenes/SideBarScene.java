@@ -9,5 +9,5 @@ package views.globalScenes;
  * @author dotac
  */
 public class SideBarScene {
-    
+    //TODO: whole thing
 }

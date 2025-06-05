@@ -9,5 +9,5 @@ package views.managersScenes;
  * @author dotac
  */
 public class ManageSalesScene {
-    
+    //TODO: whole thing
 }

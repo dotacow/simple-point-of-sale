@@ -9,5 +9,5 @@ package views.cashierScenes;
  * @author dotac
  */
 public class CheckCashScene {
-    
+ //TODO: whole thing   
 }

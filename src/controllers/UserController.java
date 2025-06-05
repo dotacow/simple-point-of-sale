@@ -96,7 +96,6 @@ public class UserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return users;
     }
     public static boolean authenticate(String username, String password)

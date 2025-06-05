@@ -23,7 +23,7 @@ public class Main extends Application
 {
     @Override
     public void start(Stage primaryStage) {
-        new LoginView().start(primaryStage);
+        new ProductView().start(primaryStage);
     }
 
     /**

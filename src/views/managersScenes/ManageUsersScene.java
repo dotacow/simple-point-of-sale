@@ -8,7 +8,6 @@ package views.managersScenes;
  *
  * @author dotac
  */
-//TODO: whole thing
 public class ManageUsersScene {
-    
+    //TODO: whole thing
 }
