@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import views.ProductView;
+import views.managersScenes.ManageProductsScene;
 /**
  *
  * @author dotacow
@@ -23,7 +23,7 @@ public class Main extends Application
 {
     @Override
     public void start(Stage primaryStage) {
-        new ProductView().start(primaryStage);
+        new ManageProductsScene().start(primaryStage);
     }
 
     /**
