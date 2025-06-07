@@ -1,29 +1,65 @@
 package views.managersScenes;
 
 import controllers.ProductController;
-import models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import models.Product;
+import models.User;
+import views.globalScenes.SideBarComponent;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.util.List;
-import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import java.sql.SQLException;
-import javafx.scene.layout.HBox;
+import java.util.List;
 
 public class ManageProductsScene {
-
     private final ProductController controller = new ProductController();
+    private User currentUser;
+    private Stage stage;
 
-    public void start(Stage stage) {
+    public ManageProductsScene(Stage stage, User currentUser) {
+        this.stage = stage;
+        this.currentUser = currentUser;
+    }
+
+    public void show() {
+        BorderPane mainLayout = new BorderPane();
+
+        // Sidebar
+        SideBarComponent sidebar = new SideBarComponent(currentUser, stage);
+        mainLayout.setLeft(sidebar.getSidebar());
+
+        // Main content (Product management interface)
+        VBox content = new VBox(10);
+        content.setPadding(new Insets(10));
+        content.setStyle("-fx-background-color: #ecf0f1;");
+
+        TableView<Product> tableView = createProductTable();
+        loadProducts(tableView);
+
+        Button addButton = new Button("Add Product");
+        addButton.setOnAction(e -> showAddProductForm(tableView));
+
+        VBox topPane = new VBox(10, addButton);
+        topPane.setPadding(new Insets(10));
+
+        content.getChildren().addAll(topPane, tableView);
+        mainLayout.setCenter(content);
+
+        Scene scene = new Scene(mainLayout, 1000, 600);
+        stage.setScene(scene);
+        stage.setTitle("Manage Products");
+        stage.show();
+    }
+
+    private TableView<Product> createProductTable() {
         TableView<Product> tableView = new TableView<>();
 
         TableColumn<Product, Integer> idCol = new TableColumn<>("ID");
@@ -56,7 +92,6 @@ public class ManageProductsScene {
         });
 
         TableColumn<Product, Void> actionsCol = new TableColumn<>("Actions");
-
         actionsCol.setCellFactory(col -> new TableCell<>() {
             private final Button editBtn = new Button("Edit");
             private final Button deleteBtn = new Button("Delete");
@@ -74,7 +109,7 @@ public class ManageProductsScene {
                 deleteBtn.setOnAction(e -> {
                     Product product = getTableView().getItems().get(getIndex());
                     try {
-                        controller.deleteProduct(product.getProductId()); // Ensure this method exists
+                        controller.deleteProduct(product.getProductId());
                         getTableView().getItems().remove(product);
                     } catch (SQLException ex) {
                         showAlert("Delete failed: " + ex.getMessage());
@@ -89,25 +124,8 @@ public class ManageProductsScene {
             }
         });
 
-        tableView.getColumns()
-                .addAll(idCol, nameCol, qtyCol, catCol, priceCol, imageCol, actionsCol);
-
-        loadProducts(tableView);
-
-        Button addButton = new Button("Add Product");
-
-        addButton.setOnAction(e -> showAddProductForm(tableView));
-
-        VBox topPane = new VBox(10, addButton);
-        topPane.setPadding(new Insets(10));
-        BorderPane root = new BorderPane();
-        root.setTop(topPane);
-        root.setCenter(tableView);
-        root.setPadding(new Insets(10));
-        
-        stage.setTitle("Product List");
-        stage.setScene(new Scene(root, 800, 500));
-        stage.show();
+        tableView.getColumns().addAll(idCol, nameCol, qtyCol, catCol, priceCol, imageCol, actionsCol);
+        return tableView;
     }
 
     private void loadProducts(TableView<Product> tableView) {
@@ -152,19 +170,15 @@ public class ManageProductsScene {
                 }
 
                 Product newProduct = new Product(id, name, qty, category, selectedImage[0], price);
-
-                try {
-                    controller.addProduct(newProduct);
-                    loadProducts(tableView);
-                    formStage.close();
-                } catch (SQLException sqlEx) {
-                    if (sqlEx.getMessage().contains("UNIQUE") || sqlEx.getMessage().contains("PRIMARY")) {
-                        showAlert("Product ID already exists. Please use a different ID.");
-                    } else {
-                        showAlert("Database error: " + sqlEx.getMessage());
-                    }
+                controller.addProduct(newProduct);
+                loadProducts(tableView);
+                formStage.close();
+            } catch (SQLException sqlEx) {
+                if (sqlEx.getMessage().contains("UNIQUE") || sqlEx.getMessage().contains("PRIMARY")) {
+                    showAlert("Product ID already exists. Please use a different ID.");
+                } else {
+                    showAlert("Database error: " + sqlEx.getMessage());
                 }
-
             } catch (Exception ex) {
                 showAlert("Invalid input: " + ex.getMessage());
                 ex.printStackTrace();
@@ -200,7 +214,6 @@ public class ManageProductsScene {
         categoryBox.setValue(product.getCategory());
 
         Button saveBtn = new Button("Update");
-
         saveBtn.setOnAction(e -> {
             try {
                 String name = nameField.getText();
@@ -209,8 +222,7 @@ public class ManageProductsScene {
                 Product.e_category category = categoryBox.getValue();
 
                 Product updated = new Product(product.getProductId(), name, qty, category, product.getImage(), price);
-
-                controller.updateProduct(updated);  // Assumes you have an `updateProduct()` method
+                controller.updateProduct(updated);
                 loadProducts(tableView);
                 formStage.close();
             } catch (Exception ex) {
@@ -226,6 +238,7 @@ public class ManageProductsScene {
                 saveBtn
         );
         form.setPadding(new Insets(15));
+
         formStage.setScene(new Scene(form, 300, 350));
         formStage.show();
     }

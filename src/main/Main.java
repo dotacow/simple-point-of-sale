@@ -11,8 +11,9 @@ import views.managersScenes.ManageProductsScene;
  */
 public class Main extends Application {   
     @Override
-    public void start(Stage primaryStage) {
-        new ManageProductsScene().start(primaryStage);
+    public void start(Stage primaryStage)
+    {
+        new LoginView(primaryStage).show();
     }
   
     public static void main(String[] args) {

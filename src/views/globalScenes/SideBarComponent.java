@@ -11,12 +11,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import views.managersScenes.*;
+import views.cashierScenes.*;
 
 /**
  * Sidebar navigation component for the POS system
  * @author dotac
  */
-public class SideBarComponent{
+public class SideBarComponent {
     
     private VBox sidebar;
     private User currentUser;
@@ -27,8 +29,9 @@ public class SideBarComponent{
         this.stage = stage;
         createSidebar();
     }
-    
-    private void createSidebar() {
+
+    private void createSidebar()
+    {
         sidebar = new VBox();
         sidebar.setPrefWidth(250);
         sidebar.setMinWidth(250);
@@ -51,11 +54,12 @@ public class SideBarComponent{
         createLogoutSection();
     }
     
-    private void createUserInfoSection() {
+    private void createUserInfoSection()
+    {
         VBox userInfo = new VBox(5);
         userInfo.setPadding(new Insets(0, 0, 20, 0));
         userInfo.setAlignment(Pos.CENTER_LEFT);
-        
+    
         Label welcomeLabel = new Label("Welcome");
         welcomeLabel.setTextFill(Color.LIGHTGRAY);
         welcomeLabel.setFont(Font.font("Arial", 12));
@@ -72,13 +76,15 @@ public class SideBarComponent{
         sidebar.getChildren().add(userInfo);
     }
     
-    private void createMenuItems() {
+    private void createMenuItems()
+    {
         VBox menuSection = new VBox(2);
         menuSection.setAlignment(Pos.TOP_LEFT);
+        
         // Manager-only menu items
-        if (currentUser.getRole() == User.Role.MANAGER){
+        if (currentUser.getRole() == User.Role.MANAGER)
+        {
             menuSection.getChildren().addAll(
-                createMenuButton("📊 Dashboard", "Dashboard", this::navigateToDashboard),
                 createMenuButton("📦 Manage Products", "Manage Products", this::navigateToManageProducts),
                 createMenuButton("🛒 Manage Sales", "Manage Sales", this::navigateToManageSales),
                 createMenuButton("📈 Sales Stats", "Sales Statistics", this::navigateToSalesStats),
@@ -88,6 +94,7 @@ public class SideBarComponent{
         
         // Common menu items for all users
         menuSection.getChildren().addAll(
+            createMenuButton("📊 Dashboard", "Dashboard", this::navigateToDashboard),
             createMenuButton("💰 Make Sale", "Make Sale", this::navigateToMakeSale),
             createMenuButton("💵 Check Cash", "Check Cash", this::navigateToCheckCash)
         );
@@ -174,51 +181,54 @@ public class SideBarComponent{
         sidebar.getChildren().add(logoutSection);
     }
     
-    // Navigation methods (to be implemented)
-    private void navigateToDashboard() {
+    // Navigation methods - now using SceneManager
+    private void navigateToDashboard()
+    {
         System.out.println("Navigate to Dashboard");
-        // TODO: Implement navigation to DashBoardScene
+        new DashBoardScene(stage, currentUser).show();
     }
     
     private void navigateToManageProducts() {
         System.out.println("Navigate to Manage Products");
-        // TODO: Implement navigation to ManageProductsScene
+       new  ManageProductsScene(stage, currentUser).show();
     }
     
     private void navigateToManageSales() {
         System.out.println("Navigate to Manage Sales");
-        // TODO: Implement navigation to ManageSalesScene
+    //        sceneManager.showManageSales();
+    //todo:
     }
     
     private void navigateToSalesStats() {
         System.out.println("Navigate to Sales Stats");
-        // TODO: Implement navigation to ViewSalesStatsScene
+    //        sceneManager.showSalesStats();
     }
     
-    private void navigateToManageUsers() {
+    private void navigateToManageUsers()
+    {
         System.out.println("Navigate to Manage Users");
-        // TODO: Implement navigation to ManageUsersScene
+    //        sceneManager.showManageUsers();
     }
-    
-    private void navigateToMakeSale() {
+    private void navigateToMakeSale()
+    {
         System.out.println("Navigate to Make Sale");
-        // TODO: Implement navigation to MakeSaleScene
+//            sceneManager.showMakeSale();
     }
     
     private void navigateToCheckCash() {
         System.out.println("Navigate to Check Cash");
-        // TODO: Implement navigation to CheckCashScene
+    //        sceneManager.showCheckCash();
     }
     
-    private void logout() {
+    private void logout()
+    {
         System.out.println("Logout");
-        // TODO: Implement logout logic - return to LoginView
-        LoginView loginView = new LoginView(stage);
-        loginView.show();
+        new LoginView(stage).show();
     }
     
     // Getter for the sidebar component
-    public VBox getSidebar() {
+    public VBox getSidebar()
+    {
         return sidebar;
     }
 }
