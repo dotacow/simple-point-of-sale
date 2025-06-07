@@ -1,6 +1,7 @@
 package views.globalScenes;
 
 import models.User;
+import utils.SceneManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,8 +12,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import views.cashierScenes.*;
-import views.managersScenes.*;
 
 /**
  * Sidebar navigation component for the POS system
@@ -23,10 +22,12 @@ public class SideBarComponent {
     private VBox sidebar;
     private User currentUser;
     private Stage stage;
+    private SceneManager sceneManager;
     
     public SideBarComponent(User currentUser, Stage stage) {
         this.currentUser = currentUser;
         this.stage = stage;
+        this.sceneManager = SceneManager.getInstance();
         createSidebar();
     }
 
@@ -177,65 +178,46 @@ public class SideBarComponent {
         sidebar.getChildren().add(logoutSection);
     }
     
-    // Navigation methods
+    // Navigation methods - now using SceneManager
     private void navigateToDashboard() {
         System.out.println("Navigate to Dashboard");
-        // Check if we're already on a dashboard scene
-        if (stage.getScene() != null && stage.getTitle().contains("Dashboard")) {
-            System.out.println("Already on Dashboard - refreshing data");
-            // If you want to refresh data, you could emit an event here
-            return;
-        }
-        
-        // Create new dashboard scene while preserving stage state
-        boolean wasMaximized = stage.isMaximized();
-        DashBoardScene dbScene = new DashBoardScene(stage, currentUser);
-        dbScene.show();
-        
-        // Ensure maximized state is preserved
-        if (wasMaximized) {
-            stage.setMaximized(true);
-        }
+        sceneManager.showDashboard();
     }
     
     private void navigateToManageProducts() {
         System.out.println("Navigate to Manage Products");
-        // TODO: Implement navigation to ManageProductsScene
+        sceneManager.showManageProducts();
     }
     
     private void navigateToManageSales() {
         System.out.println("Navigate to Manage Sales");
-        // TODO: Implement navigation to ManageSalesScene
+//        sceneManager.showManageSales();
+//todo:
     }
     
     private void navigateToSalesStats() {
         System.out.println("Navigate to Sales Stats");
-        // TODO: Implement navigation to ViewSalesStatsScene
+//        sceneManager.showSalesStats();
     }
     
     private void navigateToManageUsers() {
         System.out.println("Navigate to Manage Users");
-        // TODO: Implement navigation to ManageUsersScene
+//        sceneManager.showManageUsers();
     }
     
     private void navigateToMakeSale() {
         System.out.println("Navigate to Make Sale");
-        // TODO: Implement navigation to MakeSaleScene
+//        sceneManager.showMakeSale();
     }
     
     private void navigateToCheckCash() {
         System.out.println("Navigate to Check Cash");
-        // TODO: Implement navigation to CheckCashScene
+//        sceneManager.showCheckCash();
     }
     
     private void logout() {
         System.out.println("Logout");
-        // Reset stage to login state
-        stage.setMaximized(false);
-        stage.setResizable(true);
-        
-        LoginView loginView = new LoginView(stage);
-        loginView.show();
+        sceneManager.logout();
     }
     
     // Getter for the sidebar component

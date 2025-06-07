@@ -7,19 +7,20 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.User;
-import views.managersScenes.DashBoardScene;
+import utils.SceneManager;
 
 public class LoginView {
     private Stage stage;
+    private Scene scene;
+    private SceneManager sceneManager;
     
     public LoginView(Stage stage) {
         this.stage = stage;
+        this.sceneManager = SceneManager.getInstance();
+        createLoginScene();
     }
     
-    public void show() {
-        // Reset stage to windowed mode for login
-        stage.setMaximized(false);
-        stage.setResizable(true);
+    private void createLoginScene() {
         // UI Elements
         Label titleLabel = new Label("Point of Sale System");
         titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;");
@@ -47,42 +48,50 @@ public class LoginView {
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-background-color: #2c3e50; -fx-font-size: 14px;");
         
-        Scene scene = new Scene(layout, 350, 400);
+        scene = new Scene(layout, 350, 400);
+        
+        // Event Handling
+        loginBtn.setOnAction(e -> handleLogin(usernameField, passwordField, messageLabel));
+        
+        // Allow Enter key to submit
+        passwordField.setOnAction(e -> loginBtn.fire());
+        usernameField.setOnAction(e -> passwordField.requestFocus());
+    }
+    
+    private void handleLogin(TextField usernameField, PasswordField passwordField, Label messageLabel) {
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText();
+        
+        if (username.isEmpty() || password.isEmpty()) {
+            messageLabel.setText("Please enter both username and password.");
+            return;
+        }
+        
+        User authenticatedUser = UserController.authenticate(username, password);
+        if (authenticatedUser != null) {
+            // Clear any error messages
+            messageLabel.setText("");
+            
+            // Set the current user in SceneManager and navigate to dashboard
+            sceneManager.setCurrentUser(authenticatedUser);
+            sceneManager.showDashboard();
+        } else {
+            messageLabel.setText("Invalid username or password.");
+            // Clear password field for security
+            passwordField.clear();
+        }
+    }
+    
+    public void show() {
+        // Reset stage to windowed mode for login
+        stage.setMaximized(false);
+        stage.setResizable(true);
         stage.setTitle("abu m7md's supermarket - Login");
         stage.setScene(scene);
         
         // Center the login window
         stage.centerOnScreen();
         stage.show();
-        
-        // Event Handling
-        loginBtn.setOnAction(e -> {
-            String username = usernameField.getText().trim();
-            String password = passwordField.getText();
-            
-            if (username.isEmpty() || password.isEmpty()) {
-                messageLabel.setText("Please enter both username and password.");
-                return;
-            }
-            
-            User authenticatedUser = UserController.authenticate(username, password);
-            if (authenticatedUser != null) {
-                // Clear any error messages
-                messageLabel.setText("");
-                
-                // Navigate to dashboard
-                DashBoardScene dashboardScene = new DashBoardScene(stage, authenticatedUser);
-                dashboardScene.show();
-            } else {
-                messageLabel.setText("Invalid username or password.");
-                // Clear password field for security
-                passwordField.clear();
-            }
-        });
-        
-        // Allow Enter key to submit
-        passwordField.setOnAction(e -> loginBtn.fire());
-        usernameField.setOnAction(e -> passwordField.requestFocus());
     }
     
     private void styleTextField(TextField field) {
