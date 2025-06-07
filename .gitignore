@@ -15,6 +15,7 @@ Libraries/
 ##############################
 ## NetBeans
 ##############################
+nbproject/
 nbproject/private/
 build/
 nbbuild/
