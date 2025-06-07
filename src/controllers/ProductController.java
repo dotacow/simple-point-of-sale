@@ -80,7 +80,7 @@ public class ProductController {
         return productList;
     }
 
-    public void updateProduct(Product product) {
+    public void updateProduct(Product product) throws SQLException {
         String sql = "UPDATE `product` SET `Name`=?, `StockQuantity`=?, `Category`=?, `Image`=?, `Price`=? WHERE `ProductId`=?";
 
         try (Connection conn = utils.DBHelper.connect(); PreparedStatement stmt = conn.prepareStatement(sql); FileInputStream fis = new FileInputStream(product.getImage())) {
@@ -100,7 +100,7 @@ public class ProductController {
         }
     }
 
-    public void deleteProduct(int productId) {
+    public void deleteProduct(int productId) throws SQLException {
         String sql = "DELETE FROM `product` WHERE `ProductId`=?";
 
         try (Connection conn = utils.DBHelper.connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
