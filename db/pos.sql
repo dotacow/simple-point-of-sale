@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2025 at 09:31 PM
+-- Generation Time: Jun 07, 2025 at 11:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `product` (
   `Name` varchar(40) NOT NULL,
   `StockQuantity` int(4) NOT NULL,
   `Category` enum('Pharmacy','Food','Hygiene','') NOT NULL,
-  `Image` blob DEFAULT NULL,
+  `Image` mediumblob DEFAULT NULL,
   `Price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,8 +41,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ProductId`, `Name`, `StockQuantity`, `Category`, `Image`, `Price`) VALUES
-(1, '0', 100, 'Pharmacy', NULL, 5.99),
-(2, '0', 50, 'Food', NULL, 2.49),
+(1, 'meow', 100, 'Pharmacy', NULL, 5.99),
+(2, 'Cat food high protien', 50, 'Food', NULL, 2.49),
 (3, '0', 75, 'Hygiene', NULL, 1.99);
 
 -- --------------------------------------------------------
