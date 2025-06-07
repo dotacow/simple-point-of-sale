@@ -4,6 +4,8 @@ package utils;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.*;
 
 /**
@@ -26,5 +28,18 @@ public class DBHelper {
         }
     }
 
+    public static File writeBlobToTempFile(Blob blob) {
+    try {
+        byte[] bytes = blob.getBytes(1, (int) blob.length());
+        File temp = File.createTempFile("img_", ".tmp");
+        try (FileOutputStream fos = new FileOutputStream(temp)) {
+            fos.write(bytes);
+        }
+        return temp;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 }
 

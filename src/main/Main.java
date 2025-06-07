@@ -1,13 +1,14 @@
 package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import utils.SceneManager;
 
+import views.globalScenes.*;
+import views.managersScenes.ManageProductsScene;
+import utils.SceneManager;
 /**
  * @author dotacow  
  */
-public class Main extends Application {
-    
+public class Main extends Application {   
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("abu m7md's supermarket");
@@ -20,7 +21,7 @@ public class Main extends Application {
         // Show login screen through SceneManager
         sceneManager.showLogin();
     }
-    
+  
     public static void main(String[] args) {
         launch(args);
     }
