@@ -11,12 +11,12 @@
 	1.6-			--> MAKE SALE
 	1.7-			--> CHECK CASH
 	1.8				--> LOGOUT
-	UI[] // kittaneh
+	UI[x] // kittaneh
 	FUNCTIONALITY [] // kittaneh
 @@
 2- LOGIN SCENE
-	UI[] // kittaneh
-	FUNCTIONALITY [] // 
+	UI[x] // kittaneh
+	FUNCTIONALITY [x] // 
 ####MANAGER SCENES:
 @@
 3-DASHBOARD
@@ -24,20 +24,20 @@
 	-sales stats
 	-employee stats
 	-quick action (hamza will do it)
-	UI[] // kittaneh
-	FUNCTIONALITY [] //
+	UI[x] // kittaneh
+	FUNCTIONALITY [x] //
 @@
 4-MANAGE PRODUCTS
 	-add product
 	-edit product details
 	-delete product
-	UI[] // kittaneh
+	UI[] // shishani		
 	FUNCTIONALITY [] //
 @@
 5-MANAGE SALES
 	-edit sale details
 	-delete sale (I love tax fraud)
-	UI[] // kittaneh
+	UI[] //
 	FUNCTIONALITY [] //
 @@
 6-VIEW SALES STATS
@@ -65,25 +65,25 @@
 ### DB SCHEMA ###
 @@
 USER:
-	-Id int (PK)
+	-UserId int (PK)
 	-Name varchar(40)
 	-Role enum ("Manager","Cashier")
 	-Pwd varchar(16)
 	-UsrName varchar(16)
 @@
 SALE:
-	-Id int (PK)
-	-UsrId int (FK)
+	-SaleId int (PK)
+	-UserId int (FK)//this is the seller who authorized the salez
 	-CreatedAtTime datetime
 	-TotalPrice	flaot
 	-PaymentMethod enum("Cash","Credit")
 @@
 PRODUCT:
-	-Id (PK) int
+	-ProductId (PK) int
 	-Name varchar(40)
 	-StockQuantity int (4)
 	-Category enum("pharmacy","Food","Hygiene")
-	-Image binary_large_object(blob)
+	-Image binary_large_object(medium blob)
 	-Price float
 @@
 SaleProducts
