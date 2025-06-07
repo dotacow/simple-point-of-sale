@@ -5,11 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Product {
-    
+
     public enum e_category {
         Pharmacy, Food, Hygiene
     }
-    
+
     private int productId;
     private String name;
     private int quantity;
@@ -17,27 +17,50 @@ public class Product {
     private e_category category;
     private File image;
 
-    public Product(int productId, String name, int quantity, double price, e_category category, File image) {
-        this.productId = productId;
+    // For creating new products
+    public Product(int id, String name, int qty, e_category category, File imageFile, double price) {
+        this.productId = id;
         this.name = name;
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity = qty;
         this.category = category;
-        this.image = image;
+        this.image = imageFile;
+        this.price = price;
     }
+    
+    
 
     // Getters here...
-    public int getProductId() { return productId; }
-    public String getName() { return name; }
-    public int getQuantity() { return quantity; }
-    public double getPrice() { return price; }
-    public e_category getCategory() { return category; }
-    public File getImage() { return image; }
-    
-        public byte[] getImageBytes() {
-        if (image == null) return null;
-        try (FileInputStream fis = new FileInputStream(image)) {
-            return fis.readAllBytes();
+    public int getProductId() {
+        return productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public e_category getCategory() {
+        return category;
+    }
+
+    public File getImage() {
+        return image;
+    }
+
+    public byte[] getImageBytes() {
+        if (image == null) {
+            return null;
+        }
+
+        try {
+            return java.nio.file.Files.readAllBytes(image.toPath());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
