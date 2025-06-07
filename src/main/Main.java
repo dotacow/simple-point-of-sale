@@ -24,13 +24,12 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Point of Sale System");
-        primaryStage.setMaximized(true);
-        
+        primaryStage.setTitle("Point of Sale System");        
         // Create and show login view
         LoginView loginView = new LoginView(primaryStage);
         loginView.show();
         
+        primaryStage.setMaximized(false);
         primaryStage.show();
     }
     
