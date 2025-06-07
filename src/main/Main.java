@@ -13,24 +13,28 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import views.managersScenes.ManageProductsScene;
+import views.managersScenes.*;
+import views.globalScenes.*;
+import views.cashierScenes.*;
 /**
  *
- * @author dotacow
+ * @author dotacow  
  */
-import views.globalScenes.LoginView;
-public class Main extends Application
-{
+public class Main extends Application {
+    
     @Override
     public void start(Stage primaryStage) {
-        new ManageProductsScene().start(primaryStage);
+        primaryStage.setTitle("Point of Sale System");
+        primaryStage.setMaximized(true);
+        
+        // Create and show login view
+        LoginView loginView = new LoginView(primaryStage);
+        loginView.show();
+        
+        primaryStage.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         launch(args);
     }
-
 }

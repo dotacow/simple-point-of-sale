@@ -98,10 +98,28 @@ public class UserController {
         }
         return users;
     }
-    public static boolean authenticate(String username, String password)
-    {
-        //TODO: actual auth
-        return username.equals("admin") && password.equals("admin");
+    public static User authenticate(String username, String password) {
+    String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+    try (Connection conn = DBHelper.connect();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, username);
+        stmt.setString(2, password);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            return new User(
+                rs.getInt("id"),
+                rs.getString("name"),
+                User.Role.valueOf(rs.getString("role").toUpperCase()),
+                rs.getString("password"),
+                rs.getString("username")
+            );
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return null;
+}
 
 }
