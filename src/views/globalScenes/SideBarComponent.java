@@ -64,11 +64,7 @@ public class SideBarComponent{
         userNameLabel.setTextFill(Color.WHITE);
         userNameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         
-        Label roleLabel = new Label();
-        if (currentUser.getRole() == User.Role.CASHIER)
-            roleLabel.setText("Cashier");
-        else
-            roleLabel.setText("Manager");
+        Label roleLabel = new Label(currentUser.getRole().toString());
         roleLabel.setTextFill(Color.LIGHTBLUE);
         roleLabel.setFont(Font.font("Arial", 12));
         
@@ -79,9 +75,8 @@ public class SideBarComponent{
     private void createMenuItems() {
         VBox menuSection = new VBox(2);
         menuSection.setAlignment(Pos.TOP_LEFT);
-        
         // Manager-only menu items
-        if ("Manager".equals(currentUser.getRole())) {
+        if (currentUser.getRole() == User.Role.MANAGER){
             menuSection.getChildren().addAll(
                 createMenuButton("📊 Dashboard", "Dashboard", this::navigateToDashboard),
                 createMenuButton("📦 Manage Products", "Manage Products", this::navigateToManageProducts),

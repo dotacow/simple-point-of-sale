@@ -72,36 +72,37 @@ public class DashBoardScene {
         // Inventory Stats Card
         VBox inventoryCard = createStatsCard(
             "📦 Inventory", 
-            "150", 
+            "8", 
             "Total Products", 
             "#3498db"
         );
-        
+ 
         // Sales Stats Card
-        VBox salesCard = createStatsCard(
-            "💰 Sales Today", 
-            "$1,250.00", 
-            "Total Revenue", 
-            "#2ecc71"
-        );
-        
-        // Employee Stats Card
-        VBox employeeCard = createStatsCard(
-            "👥 Employees", 
-            "8", 
-            "Active Users", 
-            "#e74c3c"
-        );
-        
-        // Low Stock Alert Card
-        VBox lowStockCard = createStatsCard(
-            "⚠️ Low Stock", 
-            "12", 
-            "Items Below 10", 
+            VBox salesCard = createStatsCard(
+                "💰 Sales Today", 
+              "$1,250.00", 
+              "Total Revenue", 
+               "#2ecc71"
+           );
+               
+         // Employee Stats Card
+            VBox employeeCard = createStatsCard(
+                "👥 Employees", 
+              "8", 
+              "Active Users", 
+              "#e74c3c"
+          );
+
+        // total amount of items
+        VBox totalItemCard = createStatsCard(
+            "📦🥕️ in Stock", 
+            "150", 
+            "total items", 
             "#f39c12"
         );
-        
-        statsRow.getChildren().addAll(inventoryCard, salesCard, employeeCard, lowStockCard);
+        statsRow.getChildren().addAll(inventoryCard, totalItemCard);
+        if (currentUser.isManager())
+          statsRow.getChildren().addAll(salesCard, employeeCard);
         return statsRow;
     }
     

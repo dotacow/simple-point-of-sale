@@ -37,4 +37,11 @@ public class User {
 
     public String getUsrName() { return usrName; }
     public void setUsrName(String usrName) { this.usrName = usrName; }
+    
+    public boolean isManager()
+    {
+        if (this.role == role.MANAGER)
+            return true;
+        return false;
+    }
 }
