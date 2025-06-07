@@ -18,21 +18,23 @@ import views.globalScenes.*;
 import views.cashierScenes.*;
 /**
  *
- * @author dotacow
+ * @author dotacow  
  */
-public class Main extends Application
-{
+public class Main extends Application {
+    
     @Override
-    public void start(Stage primaryStage)
-    {
-        new ManageProductsScene().start(primaryStage);
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Point of Sale System");
+        primaryStage.setMaximized(true);
+        
+        // Create and show login view
+        LoginView loginView = new LoginView(primaryStage);
+        loginView.show();
+        
+        primaryStage.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         launch(args);
     }
-
 }

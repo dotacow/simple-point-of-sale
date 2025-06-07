@@ -10,13 +10,13 @@
 	1.5-(MNGR_ONLY) --> MANAGE USERS
 	1.6-			--> MAKE SALE
 	1.7-			--> CHECK CASH
-	1.8				--> تسجيل الخروج
-	UI[] //
-	FUNCTIONALITY [] //
+	1.8				--> LOGOUT
+	UI[] // kittaneh
+	FUNCTIONALITY [] // kittaneh
 @@
 2- LOGIN SCENE
-	UI[] //
-	FUNCTIONALITY [] //
+	UI[] // kittaneh
+	FUNCTIONALITY [] // 
 ####MANAGER SCENES:
 @@
 3-DASHBOARD
@@ -24,43 +24,43 @@
 	-sales stats
 	-employee stats
 	-quick action (hamza will do it)
-	UI[] //
+	UI[] // kittaneh
 	FUNCTIONALITY [] //
 @@
 4-MANAGE PRODUCTS
 	-add product
 	-edit product details
 	-delete product
-	UI[] //
+	UI[] // kittaneh
 	FUNCTIONALITY [] //
 @@
 5-MANAGE SALES
 	-edit sale details
 	-delete sale (I love tax fraud)
-	UI[] //
+	UI[] // kittaneh
 	FUNCTIONALITY [] //
 @@
 6-VIEW SALES STATS
 	-option to export as csv(excel)
-	UI[] //
+	UI[] // kittaneh
 	FUNCTIONALITY [] //
 @@
 7- MANAGE USERS
 	-add users
 	-edit user details
 	-delete user
-	UI[] //
+	UI[] //kittaneh
 	FUNCTIONALITY [] //
 ##CASHIER SCENES:
 @@
 8-MAKE SALE
 	-PRINT INVOICE (stick in alert/popup?)
 	-scan barcode
-	UI[] //
+	UI[] //kittaneh
 	FUNCTIONALITY [] //
 9-CHECK CASH
 	-exemption for first 50jds as per money_admin(shishani)
-	UI[] //
+	UI[] //kittaneh
 	FUNCTIONALITY [] //
 ### DB SCHEMA ###
 @@
