@@ -60,7 +60,8 @@ public class DashBoardScene
         return content;
     }
 
-    private HBox createStatsCards() {
+    private HBox createStatsCards()
+    {
         HBox row = new HBox(20);
         row.setAlignment(Pos.CENTER_LEFT);
 
@@ -79,7 +80,8 @@ public class DashBoardScene
         return row;
     }
 
-    private VBox createStatsCard(String title, String mainValue, String subtitle, String color) {
+    private VBox createStatsCard(String title, String mainValue, String subtitle, String color)
+    {
         VBox card = new VBox(10);
         card.setPadding(new Insets(20));
         card.setAlignment(Pos.CENTER);
@@ -117,7 +119,8 @@ public class DashBoardScene
         return card;
     }
 
-    private VBox createQuickActionsSection() {
+    private VBox createQuickActionsSection()
+    {
         VBox section = new VBox(15);
         section.setPadding(new Insets(20, 0, 0, 0));
 
@@ -181,7 +184,6 @@ public class DashBoardScene
         stage.setTitle("Dashboard - " + currentUser.getName());
         stage.setScene(scene);
         stage.setResizable(true);
-        stage.setMaximized(true);
         stage.show();
     }
 
