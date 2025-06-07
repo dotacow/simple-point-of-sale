@@ -26,7 +26,7 @@ public class ProductController {
             stmt.setDouble(6, product.getPrice());
 
             stmt.executeUpdate();
-            System.out.println("✅ Product inserted.");
+            System.out.println("Product inserted.");
 
         } catch (SQLException | IOException e) {
             e.printStackTrace();
