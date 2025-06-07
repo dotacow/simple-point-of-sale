@@ -11,12 +11,10 @@ import java.util.List;
 
 public class ProductController {
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product) throws SQLException {
         String sql = "INSERT INTO `product`(`ProductId`, `Name`, `StockQuantity`, `Category`, `Image`, `Price`) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = utils.DBHelper.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             FileInputStream fis = new FileInputStream(product.getImage())) {
+        try (Connection conn = utils.DBHelper.connect(); PreparedStatement stmt = conn.prepareStatement(sql); FileInputStream fis = new FileInputStream(product.getImage())) {
 
             stmt.setInt(1, product.getProductId());
             stmt.setString(2, product.getName());
@@ -28,39 +26,55 @@ public class ProductController {
             stmt.executeUpdate();
             System.out.println("Product inserted.");
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1062 || e.getMessage().toLowerCase().contains("duplicate")) {  // MySQL duplicate key error
+                throw new RuntimeException("A product with this ID already exists.");
+            } else {
+                throw new RuntimeException("Database error: " + e.getMessage(), e);
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public List<Product> getAllProducts() {
         List<Product> productList = new ArrayList<>();
-        String sql = "SELECT * FROM `product`";
+        String sql = "SELECT * FROM product";
 
-        try (Connection conn = utils.DBHelper.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = utils.DBHelper.connect(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 int id = rs.getInt("ProductId");
                 String name = rs.getString("Name");
                 int quantity = rs.getInt("StockQuantity");
                 String categoryStr = rs.getString("Category");
-                double price = rs.getDouble("Price");
                 byte[] imageBytes = rs.getBytes("Image");
+                double price = rs.getDouble("Price");
 
-                // Save image to temp file (you can display it or keep it null if not used)
-                File tempImage = File.createTempFile("product_" + id + "_", ".img");
-                try (FileOutputStream fos = new FileOutputStream(tempImage)) {
-                    fos.write(imageBytes);
+                Product.e_category category = Product.e_category.valueOf(categoryStr);
+
+                // Convert byte[] to File
+                File tempImage = null;
+                if (imageBytes != null) {
+                    tempImage = File.createTempFile("product_" + id + "_", ".img");
+                    try (FileOutputStream fos = new FileOutputStream(tempImage)) {
+                        fos.write(imageBytes);
+                    }
+                    tempImage.deleteOnExit(); // optional: delete temp file when app exits
                 }
 
-                Product product = new Product(id, name, quantity, price, Product.e_category.valueOf(categoryStr), tempImage);
+                Product product = new Product(id, name, quantity, category, tempImage, price);
                 productList.add(product);
             }
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
+            System.err.println("Database error while fetching products: " + e.getMessage());
             e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("File I/O error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid category in database: " + e.getMessage());
         }
 
         return productList;
@@ -69,9 +83,7 @@ public class ProductController {
     public void updateProduct(Product product) {
         String sql = "UPDATE `product` SET `Name`=?, `StockQuantity`=?, `Category`=?, `Image`=?, `Price`=? WHERE `ProductId`=?";
 
-        try (Connection conn = utils.DBHelper.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             FileInputStream fis = new FileInputStream(product.getImage())) {
+        try (Connection conn = utils.DBHelper.connect(); PreparedStatement stmt = conn.prepareStatement(sql); FileInputStream fis = new FileInputStream(product.getImage())) {
 
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getQuantity());
@@ -91,8 +103,7 @@ public class ProductController {
     public void deleteProduct(int productId) {
         String sql = "DELETE FROM `product` WHERE `ProductId`=?";
 
-        try (Connection conn = utils.DBHelper.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = utils.DBHelper.connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, productId);
             stmt.executeUpdate();

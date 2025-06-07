@@ -1,13 +1,8 @@
-
 package main;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,8 +15,7 @@ import views.cashierScenes.*;
  *
  * @author dotacow  
  */
-public class Main extends Application {
-    
+public class Main extends Application {   
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Point of Sale System");        
@@ -31,7 +25,7 @@ public class Main extends Application {
         primaryStage.setMaximized(false);
         primaryStage.show();
     }
-    
+  
     public static void main(String[] args) {
         launch(args);
     }
