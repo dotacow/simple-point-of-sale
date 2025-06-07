@@ -5,7 +5,7 @@ import java.io.File;
 public class Product {
     
     public enum e_category {
-    ELECTRONICS, CLOTHING, FOOD, OTHER
+        Pharmacy, Food, Hygiene
     }
     
     private int productId;

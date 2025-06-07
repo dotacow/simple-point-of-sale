@@ -57,7 +57,7 @@ public class ManageProductsScene {
                 Product.e_category category = cmbCategory.getValue();
 
                 if (selectedImage == null || category == null) {
-                    lblStatus.setText("⚠ Please select image and category.");
+                    lblStatus.setText("Please select image and category.");
                     return;
                 }
 
@@ -65,7 +65,7 @@ public class ManageProductsScene {
                 ProductController controller = new ProductController();
                 controller.addProduct(product);
 
-                lblStatus.setText("✅ Product added.");
+                lblStatus.setText("Product added.");
 
                 // Clear fields
                 txtId.clear();
@@ -76,10 +76,10 @@ public class ManageProductsScene {
                 selectedImage = null;
 
             } catch (NumberFormatException ex) {
-                lblStatus.setText("❌ Invalid number format.");
+                lblStatus.setText("Invalid number format.");
             } catch (Exception ex) {
                 ex.printStackTrace();
-                lblStatus.setText("❌ Error adding product.");
+                lblStatus.setText("Error adding product.");
             }
         });
 
