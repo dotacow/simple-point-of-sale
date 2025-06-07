@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import views.managersScenes.*;
+import views.cashierScenes.*;
 
 /**
  * Sidebar navigation component for the POS system
@@ -54,11 +56,12 @@ public class SideBarComponent {
         createLogoutSection();
     }
     
-    private void createUserInfoSection() {
+    private void createUserInfoSection()
+    {
         VBox userInfo = new VBox(5);
         userInfo.setPadding(new Insets(0, 0, 20, 0));
         userInfo.setAlignment(Pos.CENTER_LEFT);
-        
+    
         Label welcomeLabel = new Label("Welcome");
         welcomeLabel.setTextFill(Color.LIGHTGRAY);
         welcomeLabel.setFont(Font.font("Arial", 12));
@@ -75,7 +78,8 @@ public class SideBarComponent {
         sidebar.getChildren().add(userInfo);
     }
     
-    private void createMenuItems() {
+    private void createMenuItems()
+    {
         VBox menuSection = new VBox(2);
         menuSection.setAlignment(Pos.TOP_LEFT);
         
@@ -179,49 +183,88 @@ public class SideBarComponent {
     }
     
     // Navigation methods - now using SceneManager
+<<<<<<< HEAD
     private void navigateToDashboard() {
         System.out.println("Navigate to Dashboard");
         sceneManager.showDashboard();
+=======
+    private void navigateToDashboard()
+    {
+        System.out.println("Navigate to Dashboard");
+        new DashBoardScene(stage, currentUser).show();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
     private void navigateToManageProducts() {
         System.out.println("Navigate to Manage Products");
+<<<<<<< HEAD
         sceneManager.showManageProducts();
+=======
+       new  ManageProductsScene(stage, currentUser).show();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
     private void navigateToManageSales() {
         System.out.println("Navigate to Manage Sales");
+<<<<<<< HEAD
 //        sceneManager.showManageSales();
 //todo:
+=======
+    //        sceneManager.showManageSales();
+    //todo:
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
     private void navigateToSalesStats() {
         System.out.println("Navigate to Sales Stats");
+<<<<<<< HEAD
 //        sceneManager.showSalesStats();
+=======
+    //        sceneManager.showSalesStats();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
-    private void navigateToManageUsers() {
+    private void navigateToManageUsers()
+    {
         System.out.println("Navigate to Manage Users");
+<<<<<<< HEAD
 //        sceneManager.showManageUsers();
+=======
+    //        sceneManager.showManageUsers();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
-    
-    private void navigateToMakeSale() {
+    private void navigateToMakeSale()
+    {
         System.out.println("Navigate to Make Sale");
+<<<<<<< HEAD
 //        sceneManager.showMakeSale();
+=======
+//            sceneManager.showMakeSale();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
     private void navigateToCheckCash() {
         System.out.println("Navigate to Check Cash");
+<<<<<<< HEAD
 //        sceneManager.showCheckCash();
+=======
+    //        sceneManager.showCheckCash();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
-    private void logout() {
+    private void logout()
+    {
         System.out.println("Logout");
+<<<<<<< HEAD
         sceneManager.logout();
+=======
+        new LoginView(stage).show();
+>>>>>>> dca527e75e7c842d83d862688c907656bdc50b65
     }
     
     // Getter for the sidebar component
-    public VBox getSidebar() {
+    public VBox getSidebar()
+    {
         return sidebar;
     }
 }

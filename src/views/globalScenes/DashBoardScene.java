@@ -31,6 +31,7 @@ public class DashBoardScene {
     }
 
     private Scene createDashboard() {
+
         // Sidebar
         SideBarComponent sidebar = new SideBarComponent(currentUser, stage);
         mainLayout.setLeft(sidebar.getSidebar());
@@ -171,6 +172,7 @@ public class DashBoardScene {
         action.setOnMouseClicked(e -> {
             System.out.println("Clicked: " + title);
             // TODO: integrate SceneManager navigation here
+
         });
 
         return action;
@@ -192,3 +194,4 @@ public class DashBoardScene {
         }
     }
 }
+
