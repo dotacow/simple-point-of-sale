@@ -13,16 +13,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import views.managersScenes.ManageProductsScene;
+import views.managersScenes.*;
+import views.globalScenes.*;
+import views.cashierScenes.*;
 /**
  *
  * @author dotacow
  */
-import views.globalScenes.LoginView;
 public class Main extends Application
 {
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage)
+    {
         new ManageProductsScene().start(primaryStage);
     }
 
