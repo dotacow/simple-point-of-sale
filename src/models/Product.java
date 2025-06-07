@@ -1,6 +1,8 @@
 package models;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class Product {
     
@@ -31,4 +33,14 @@ public class Product {
     public double getPrice() { return price; }
     public e_category getCategory() { return category; }
     public File getImage() { return image; }
+    
+        public byte[] getImageBytes() {
+        if (image == null) return null;
+        try (FileInputStream fis = new FileInputStream(image)) {
+            return fis.readAllBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
