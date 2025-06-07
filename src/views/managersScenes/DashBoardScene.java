@@ -95,7 +95,7 @@ public class DashBoardScene {
 
         // total amount of items
         VBox totalItemCard = createStatsCard(
-            "📦🥕️ in Stock", 
+            "📦🥕️ In Stock", 
             "150", 
             "total items", 
             "#f39c12"

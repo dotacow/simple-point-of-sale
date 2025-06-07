@@ -11,7 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
+import views.cashierScenes.*;
+import views.managersScenes.*;
 /**
  * Sidebar navigation component for the POS system
  * @author dotac
@@ -177,7 +178,7 @@ public class SideBarComponent{
     // Navigation methods (to be implemented)
     private void navigateToDashboard() {
         System.out.println("Navigate to Dashboard");
-        // TODO: Implement navigation to DashBoardScene
+        DashBoardScene dbScene = new DashBoardScene(stage, currentUser);
     }
     
     private void navigateToManageProducts() {
