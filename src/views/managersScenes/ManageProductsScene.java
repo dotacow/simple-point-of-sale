@@ -17,6 +17,7 @@ import java.util.List;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import java.sql.SQLException;
+import javafx.scene.layout.HBox;
 
 public class ManageProductsScene {
 
@@ -54,21 +55,56 @@ public class ManageProductsScene {
             return new javafx.beans.property.SimpleObjectProperty<>(imageView);
         });
 
-        tableView.getColumns().addAll(idCol, nameCol, qtyCol, catCol, priceCol, imageCol);
+        TableColumn<Product, Void> actionsCol = new TableColumn<>("Actions");
+
+        actionsCol.setCellFactory(col -> new TableCell<>() {
+            private final Button editBtn = new Button("Edit");
+            private final Button deleteBtn = new Button("Delete");
+            private final HBox pane = new HBox(5, editBtn, deleteBtn);
+
+            {
+                editBtn.setStyle("-fx-background-color: #ffc107; -fx-text-fill: black;");
+                deleteBtn.setStyle("-fx-background-color: #dc3545; -fx-text-fill: white;");
+
+                editBtn.setOnAction(e -> {
+                    Product product = getTableView().getItems().get(getIndex());
+                    showEditProductForm(product, getTableView());
+                });
+
+                deleteBtn.setOnAction(e -> {
+                    Product product = getTableView().getItems().get(getIndex());
+                    try {
+                        controller.deleteProduct(product.getProductId()); // Ensure this method exists
+                        getTableView().getItems().remove(product);
+                    } catch (SQLException ex) {
+                        showAlert("Delete failed: " + ex.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : pane);
+            }
+        });
+
+        tableView.getColumns()
+                .addAll(idCol, nameCol, qtyCol, catCol, priceCol, imageCol, actionsCol);
 
         loadProducts(tableView);
 
-        Button addButton = new Button("➕ Add Product");
+        Button addButton = new Button("Add Product");
+
         addButton.setOnAction(e -> showAddProductForm(tableView));
 
         VBox topPane = new VBox(10, addButton);
         topPane.setPadding(new Insets(10));
-
         BorderPane root = new BorderPane();
         root.setTop(topPane);
         root.setCenter(tableView);
         root.setPadding(new Insets(10));
-
+        
         stage.setTitle("Product List");
         stage.setScene(new Scene(root, 800, 500));
         stage.show();
@@ -148,6 +184,49 @@ public class ManageProductsScene {
 
         Scene scene = new Scene(form, 300, 400);
         formStage.setScene(scene);
+        formStage.show();
+    }
+
+    private void showEditProductForm(Product product, TableView<Product> tableView) {
+        Stage formStage = new Stage();
+        formStage.setTitle("Edit Product");
+
+        TextField nameField = new TextField(product.getName());
+        TextField qtyField = new TextField(String.valueOf(product.getQuantity()));
+        TextField priceField = new TextField(String.valueOf(product.getPrice()));
+
+        ComboBox<Product.e_category> categoryBox = new ComboBox<>();
+        categoryBox.getItems().setAll(Product.e_category.values());
+        categoryBox.setValue(product.getCategory());
+
+        Button saveBtn = new Button("Update");
+
+        saveBtn.setOnAction(e -> {
+            try {
+                String name = nameField.getText();
+                int qty = Integer.parseInt(qtyField.getText());
+                double price = Double.parseDouble(priceField.getText());
+                Product.e_category category = categoryBox.getValue();
+
+                Product updated = new Product(product.getProductId(), name, qty, category, product.getImage(), price);
+
+                controller.updateProduct(updated);  // Assumes you have an `updateProduct()` method
+                loadProducts(tableView);
+                formStage.close();
+            } catch (Exception ex) {
+                showAlert("Invalid input: " + ex.getMessage());
+            }
+        });
+
+        VBox form = new VBox(10,
+                new Label("Name:"), nameField,
+                new Label("Quantity:"), qtyField,
+                new Label("Price:"), priceField,
+                new Label("Category:"), categoryBox,
+                saveBtn
+        );
+        form.setPadding(new Insets(15));
+        formStage.setScene(new Scene(form, 300, 350));
         formStage.show();
     }
 

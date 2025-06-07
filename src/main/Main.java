@@ -3,14 +3,8 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import views.managersScenes.*;
 import views.globalScenes.*;
-import views.cashierScenes.*;
+import views.managersScenes.ManageProductsScene;
 /**
  *
  * @author dotacow  
@@ -18,12 +12,7 @@ import views.cashierScenes.*;
 public class Main extends Application {   
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Point of Sale System");        
-        LoginView loginView = new LoginView(primaryStage);
-        loginView.show();
-        
-        primaryStage.setMaximized(false);
-        primaryStage.show();
+        new ManageProductsScene().start(primaryStage);
     }
   
     public static void main(String[] args) {
