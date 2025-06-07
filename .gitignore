@@ -15,15 +15,11 @@ Libraries/
 ##############################
 ## NetBeans
 ##############################
-nbproject/
 nbproject/private/
 build/
 nbbuild/
 dist/
 nbdist/
-nbproject/*
-nbproject/genfiles.properties
-nbproject/project.properties
 gen/
 nbactions.xml
 nb-configuration.xml
