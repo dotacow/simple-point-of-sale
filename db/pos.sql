@@ -136,10 +136,7 @@ INSERT INTO `user` (`UserId`, `Name`, `Role`, `Password`, `Username`) VALUES
 --
 -- Mock data for table `product`
 --
-INSERT INTO `product` (`ProductId`, `Name`, `StockQuantity`, `Category`, `Image`, `Price`) VALUES
-  (1, 'Aspirin', 100, 'Pharmacy', NULL, 5.99),
-  (2, 'Bread', 50, 'Food', NULL, 2.49),
-  (3, 'Soap', 75, 'Hygiene', NULL, 1.99);
+
 --
 -- Mock data for table `sale`
 --

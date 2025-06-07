@@ -81,7 +81,7 @@ public class ProductController {
             stmt.setInt(6, product.getProductId());
 
             stmt.executeUpdate();
-            System.out.println("✅ Product updated.");
+            System.out.println("Product updated.");
 
         } catch (SQLException | IOException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class ProductController {
 
             stmt.setInt(1, productId);
             stmt.executeUpdate();
-            System.out.println("🗑️ Product deleted.");
+            System.out.println("Product deleted.");
 
         } catch (SQLException e) {
             e.printStackTrace();
