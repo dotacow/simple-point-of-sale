@@ -65,15 +65,15 @@
 ### DB SCHEMA ###
 @@
 USER:
-	-Id int (PK)
+	-UserId int (PK)
 	-Name varchar(40)
 	-Role enum ("Manager","Cashier")
 	-Pwd varchar(16)
 	-UsrName varchar(16)
 @@
 SALE:
-	-Id int (PK)
-	-UsrId int (FK)
+	-SaleId int (PK)
+	-UserId int (FK)//this is the seller who authorized the sale
 	-CreatedAtTime datetime
 	-TotalPrice	flaot
 	-PaymentMethod enum("Cash","Credit")

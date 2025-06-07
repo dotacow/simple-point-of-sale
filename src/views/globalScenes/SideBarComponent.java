@@ -13,11 +13,12 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import views.cashierScenes.*;
 import views.managersScenes.*;
+
 /**
  * Sidebar navigation component for the POS system
  * @author dotac
  */
-public class SideBarComponent{
+public class SideBarComponent {
     
     private VBox sidebar;
     private User currentUser;
@@ -28,7 +29,7 @@ public class SideBarComponent{
         this.stage = stage;
         createSidebar();
     }
-    
+
     private void createSidebar() {
         sidebar = new VBox();
         sidebar.setPrefWidth(250);
@@ -76,10 +77,10 @@ public class SideBarComponent{
     private void createMenuItems() {
         VBox menuSection = new VBox(2);
         menuSection.setAlignment(Pos.TOP_LEFT);
+        
         // Manager-only menu items
-        if (currentUser.getRole() == User.Role.MANAGER){
+        if (currentUser.getRole() == User.Role.MANAGER) {
             menuSection.getChildren().addAll(
-                createMenuButton("📊 Dashboard", "Dashboard", this::navigateToDashboard),
                 createMenuButton("📦 Manage Products", "Manage Products", this::navigateToManageProducts),
                 createMenuButton("🛒 Manage Sales", "Manage Sales", this::navigateToManageSales),
                 createMenuButton("📈 Sales Stats", "Sales Statistics", this::navigateToSalesStats),
@@ -89,6 +90,7 @@ public class SideBarComponent{
         
         // Common menu items for all users
         menuSection.getChildren().addAll(
+            createMenuButton("📊 Dashboard", "Dashboard", this::navigateToDashboard),
             createMenuButton("💰 Make Sale", "Make Sale", this::navigateToMakeSale),
             createMenuButton("💵 Check Cash", "Check Cash", this::navigateToCheckCash)
         );
@@ -175,10 +177,25 @@ public class SideBarComponent{
         sidebar.getChildren().add(logoutSection);
     }
     
-    // Navigation methods (to be implemented)
+    // Navigation methods
     private void navigateToDashboard() {
         System.out.println("Navigate to Dashboard");
+        // Check if we're already on a dashboard scene
+        if (stage.getScene() != null && stage.getTitle().contains("Dashboard")) {
+            System.out.println("Already on Dashboard - refreshing data");
+            // If you want to refresh data, you could emit an event here
+            return;
+        }
+        
+        // Create new dashboard scene while preserving stage state
+        boolean wasMaximized = stage.isMaximized();
         DashBoardScene dbScene = new DashBoardScene(stage, currentUser);
+        dbScene.show();
+        
+        // Ensure maximized state is preserved
+        if (wasMaximized) {
+            stage.setMaximized(true);
+        }
     }
     
     private void navigateToManageProducts() {
@@ -213,7 +230,10 @@ public class SideBarComponent{
     
     private void logout() {
         System.out.println("Logout");
-        // TODO: Implement logout logic - return to LoginView
+        // Reset stage to login state
+        stage.setMaximized(false);
+        stage.setResizable(true);
+        
         LoginView loginView = new LoginView(stage);
         loginView.show();
     }
