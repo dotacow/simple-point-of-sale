@@ -24,10 +24,12 @@ public class SideBarComponent {
     private User currentUser;
     private Stage stage;
     
-    public SideBarComponent(User currentUser, Stage stage) {
+    public SideBarComponent(User currentUser, Stage stage)
+    {
         this.currentUser = currentUser;
         this.stage = stage;
         createSidebar();
+        stage.setMaximized(true);
     }
 
     private void createSidebar()
@@ -186,6 +188,7 @@ public class SideBarComponent {
     {
         System.out.println("Navigate to Dashboard");
         new DashBoardScene(stage, currentUser).show();
+        stage.setMaximized(true);
     }
     
     private void navigateToManageProducts() {

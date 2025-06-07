@@ -85,11 +85,11 @@ public class LoginView {
         // Reset stage to windowed mode for login
         stage.setResizable(true);
         stage.setTitle("abu m7md's supermarket - Login");
-        stage.setScene(scene);
+        stage.setScene(scene);//primary.setscene
         
         // Center the login window
         stage.centerOnScreen();
-        stage.show();
+        stage.show();//primary.show
     }
     
     private void styleTextField(TextField field) {

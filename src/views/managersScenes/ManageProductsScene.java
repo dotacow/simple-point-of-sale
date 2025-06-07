@@ -53,7 +53,7 @@ public class ManageProductsScene {
         content.getChildren().addAll(topPane, tableView);
         mainLayout.setCenter(content);
 
-        Scene scene = new Scene(mainLayout, 1000, 600);
+        Scene scene = new Scene(mainLayout);
         stage.setScene(scene);
         stage.setTitle("Manage Products");
         stage.show();
@@ -196,7 +196,7 @@ public class ManageProductsScene {
         );
         form.setPadding(new Insets(15));
 
-        Scene scene = new Scene(form, 300, 400);
+        Scene scene = new Scene(form, stage.getWidth(), stage.getHeight());
         formStage.setScene(scene);
         formStage.show();
     }
