@@ -44,7 +44,7 @@ public class ManageSalesScene {
         content.getChildren().add(table);
         layout.setCenter(content);
 
-        stage.setScene(new Scene(layout/*,ResHelper.getHeight(),ResHelper.getWidth()*/));
+        stage.setScene(new Scene(layout,stage.getWidth(),stage.getHeight()));
         stage.setTitle("Manage Sales");
         stage.show();
     }

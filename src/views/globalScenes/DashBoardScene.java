@@ -44,7 +44,7 @@ public class DashBoardScene
         mainContent = createMainContent();
         mainLayout.setCenter(mainContent);
 
-        return new Scene(mainLayout);
+        return new Scene(mainLayout,stage.getWidth(),stage.getHeight());
     }
 
     private VBox createMainContent() {

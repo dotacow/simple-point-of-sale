@@ -335,7 +335,7 @@ public class MakeSaleScene {
     }
 
     public Scene getScene() {
-        return new Scene(mainBox/*,ResHelper.getHeight(),ResHelper.getWidth()*/);
+        return new Scene(mainBox,primaryStage.getWidth(),primaryStage.getHeight());
     }
 
     private static class CartItem {

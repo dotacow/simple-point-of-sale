@@ -151,6 +151,6 @@ public class CheckCashScene {
 
     public Scene getScene()
     {
-        return new Scene(mainBox);
+        return new Scene(mainBox,primaryStage.getWidth(),primaryStage.getHeight());
     }
 }

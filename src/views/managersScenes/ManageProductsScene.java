@@ -56,7 +56,7 @@ public class ManageProductsScene {
         content.getChildren().addAll(topPane, tableView);
         mainLayout.setCenter(content);
 
-        Scene scene = new Scene(mainLayout/*,ResHelper.getHeight(),ResHelper.getWidth()*/);
+        Scene scene = new Scene(mainLayout,stage.getWidth(),stage.getHeight());
         stage.setScene(scene);
         stage.setTitle("Manage Products");
         stage.show();

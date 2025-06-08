@@ -50,7 +50,7 @@ public class LoginView {
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-background-color: #2c3e50; -fx-font-size: 14px;");
         
-        scene = new Scene(layout/*,ResHelper.getHeight(),ResHelper.getWidth()*/);
+        scene = new Scene(layout,stage.getWidth(),stage.getHeight());//login page size
         
         // Event Handling
         loginBtn.setOnAction(e -> handleLogin(usernameField, passwordField, messageLabel));

@@ -59,7 +59,7 @@ public class ManageUsersScene {
         mainLayout.setCenter(mainContent);
         mainLayout.setPadding(new Insets(10));
 
-        Scene scene = new Scene(mainLayout);//1920
+        Scene scene = new Scene(mainLayout,stage.getWidth(),stage.getHeight());//1920
         stage.setTitle("Manage Users - " + currentUser.getName());
         stage.setScene(scene);
 //        stage.setMaximized(true);
