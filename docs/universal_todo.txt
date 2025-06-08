@@ -1,5 +1,9 @@
 
 
+
+
+	GLOBAL RIZZ:
+	1920x1080
 ### PAGES/SCENES ###
 @@GLOBAL SCENES:
 1- SIDEBAR SCENE
@@ -11,34 +15,37 @@
 	1.6-			--> MAKE SALE
 	1.7-			--> CHECK CASH
 	1.8				--> LOGOUT
-	UI[] // kittaneh
-	FUNCTIONALITY [] // kittaneh
+	UI[x] //
+	FUNCTIONALITY [x] //
 @@
 2- LOGIN SCENE
-	UI[] // kittaneh
-	FUNCTIONALITY [] // 
+	UI[x] //
+	FUNCTIONALITY [] //
 ####MANAGER SCENES:
 @@
 3-DASHBOARD
 	-inventory stats
-	-sales stats
+	-sales stats (todo)
 	-employee stats
-	-quick action (hamza will do it)
-	UI[] // kittaneh
-	FUNCTIONALITY [] //
+	-quick action (sales report, add all other exiting scnes) (todo)
+	UI[] //kittaneh
+	FUNCTIONALITY [x] //
 @@
 4-MANAGE PRODUCTS
 	-add product
 	-edit product details
 	-delete product
-	UI[] // kittaneh
-	FUNCTIONALITY [] //
+	UI[x] //
+	FUNCTIONALITY [x] //
+	STYLING []// SHISHANI
 @@
 5-MANAGE SALES
 	-edit sale details
 	-delete sale (I love tax fraud)
-	UI[] // kittaneh
-	FUNCTIONALITY [] //
+	UI [x] //
+	FUNCTIONALITY [x] //
+	STYLING []// SHISHANI
+
 @@
 6-VIEW SALES STATS
 	-option to export as csv(excel)
@@ -49,19 +56,23 @@
 	-add users
 	-edit user details
 	-delete user
-	UI[] //kittaneh
-	FUNCTIONALITY [] //
+	UI[x] //
+	FUNCTIONALITY [x] //
+	STYLING [x] //
 ##CASHIER SCENES:
 @@
-8-MAKE SALE
+8-MAKE SALE //HAMZAH
 	-PRINT INVOICE (stick in alert/popup?)
-	-scan barcode
-	UI[] //kittaneh
-	FUNCTIONALITY [] //
-9-CHECK CASH
+		- LIST OF ITEMS[]
+	- scan barcode []
+	UI[X] //
+	FUNCTIONALITY [X] //
+	STYLING [X]
+9-CHECK CASH//HAMZAH
 	-exemption for first 50jds as per money_admin(shishani)
-	UI[] //kittaneh
-	FUNCTIONALITY [] //
+	UI[X] //
+	FUNCTIONALITY [X] //
+	STYLING []
 ### DB SCHEMA ###
 @@
 USER:
