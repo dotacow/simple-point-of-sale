@@ -11,6 +11,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import models.User;
+import views.cashierScenes.CheckCashScene;
+import views.cashierScenes.MakeSaleScene;
 
 public class DashBoardScene
 {
@@ -175,6 +177,11 @@ public class DashBoardScene
         action.setOnMouseClicked(e -> {
             System.out.println("Clicked: " + title);
             // TODO navigation here
+             if ("💵 Check Cash".equals(title)) {
+                CheckCashScene checkCashScene = new CheckCashScene(stage, currentUser);
+                stage.setScene(checkCashScene.getScene());
+                stage.setTitle("Cash Register Check");
+            }
         });
 
         return action;
