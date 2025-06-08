@@ -215,12 +215,18 @@ public class SideBarComponent {
     private void navigateToMakeSale()
     {
         System.out.println("Navigate to Make Sale");
-//            sceneManager.showMakeSale();
+        MakeSaleScene makeSaleScene = new MakeSaleScene(stage, currentUser);
+        stage.setScene(makeSaleScene.getScene());
+        stage.setTitle("Process New Sale");
+        stage.show();
     }
     
     private void navigateToCheckCash() {
         System.out.println("Navigate to Check Cash");
-    //        sceneManager.showCheckCash();
+        CheckCashScene checkCashScene = new CheckCashScene(stage, currentUser);
+        stage.setScene(checkCashScene.getScene());
+        stage.setTitle("Cash Register Check");
+        stage.show();
     }
     
     private void logout()
