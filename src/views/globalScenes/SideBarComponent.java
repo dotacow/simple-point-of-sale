@@ -206,8 +206,7 @@ public class SideBarComponent {
     
     private void navigateToManageUsers()
     {
-        System.out.println("Navigate to Manage Users");
-    //        sceneManager.showManageUsers();
+        new ManageUsersScene(stage, currentUser).show();
     }
     private void navigateToMakeSale()
     {

@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ManageProductsScene {
+
     private final ProductController controller = new ProductController();
     private User currentUser;
     private Stage stage;
@@ -41,7 +42,8 @@ public class ManageProductsScene {
         content.setPadding(new Insets(10));
         content.setStyle("-fx-background-color: #ecf0f1;");
 
-        TableView<Product> tableView = createProductTable();
+        TableView<Product> tableView = listProductsTable();
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         loadProducts(tableView);
 
         Button addButton = new Button("Add Product");
@@ -59,7 +61,7 @@ public class ManageProductsScene {
         stage.show();
     }
 
-    private TableView<Product> createProductTable() {
+    private TableView<Product> listProductsTable() {
         TableView<Product> tableView = new TableView<>();
 
         TableColumn<Product, Integer> idCol = new TableColumn<>("ID");
@@ -166,6 +168,14 @@ public class ManageProductsScene {
 
                 if (selectedImage[0] == null) {
                     showAlert("Please select an image.");
+                    return;
+                }
+                if (name.isBlank() || category == null) {
+                    showAlert("Please fill in all fields.");
+                    return;
+                }
+                if (qty < 0 || price < 0) {
+                    showAlert("Quantity and Price must be positive.");
                     return;
                 }
 
