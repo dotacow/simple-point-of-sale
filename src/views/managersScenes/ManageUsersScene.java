@@ -32,13 +32,11 @@ public class ManageUsersScene {
         // Sidebar
         SideBarComponent sidebar = new SideBarComponent(currentUser, stage);
 
-        // Main content layout
         VBox mainContent = new VBox(15);
         mainContent.setPadding(new Insets(20));
         mainContent.setStyle("-fx-background-color: #ecf0f1;");
 
-        // Users table
-        TableView<User> tableView = createUsersTable();
+        TableView<User> tableView = listUsersTable();
 
         // Add user button
         Button addButton = new Button("➕ Add User");
@@ -66,7 +64,7 @@ public class ManageUsersScene {
         stage.show();
     }
 
-    private TableView<User> createUsersTable() {
+    private TableView<User> listUsersTable() {
         TableView<User> tableView = new TableView<>();
 
         TableColumn<User, Integer> idCol = new TableColumn<>("ID");
