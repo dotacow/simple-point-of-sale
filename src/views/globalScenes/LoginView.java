@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.User;
+import utils.ResHelper;
 import views.cashierScenes.*;
 import views.globalScenes.*;
 import views.managersScenes.*;
@@ -49,7 +50,7 @@ public class LoginView {
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-background-color: #2c3e50; -fx-font-size: 14px;");
         
-        scene = new Scene(layout, 450,360);
+        scene = new Scene(layout/*,ResHelper.getHeight(),ResHelper.getWidth()*/);
         
         // Event Handling
         loginBtn.setOnAction(e -> handleLogin(usernameField, passwordField, messageLabel));
@@ -72,6 +73,7 @@ public class LoginView {
         if (authenticatedUser != null)
         {
             // Clear any error messages
+            stage.setMaximized(true);
             new DashBoardScene(stage, authenticatedUser).show();
             messageLabel.setText("");
         } else {

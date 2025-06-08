@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.List;
+import utils.ResHelper;
 
 public class ManageUsersScene {
 
@@ -33,6 +34,7 @@ public class ManageUsersScene {
         SideBarComponent sidebar = new SideBarComponent(currentUser, stage);
 
         VBox mainContent = new VBox(15);
+//        mainContent.setMinSize(ResHelper.getHeight(),ResHelper.getWidth());
         mainContent.setPadding(new Insets(20));
         mainContent.setStyle("-fx-background-color: #ecf0f1;");
 
@@ -57,10 +59,10 @@ public class ManageUsersScene {
         mainLayout.setCenter(mainContent);
         mainLayout.setPadding(new Insets(10));
 
-        Scene scene = new Scene(mainLayout, 1000, 600);
+        Scene scene = new Scene(mainLayout);//1920
         stage.setTitle("Manage Users - " + currentUser.getName());
         stage.setScene(scene);
-        stage.setMaximized(true);
+//        stage.setMaximized(true);
         stage.show();
     }
 

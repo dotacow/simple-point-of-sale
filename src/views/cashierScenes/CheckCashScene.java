@@ -9,9 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.User;
-import utils.DBHelper;
+import utils.*;
 import java.sql.*;
-import views.globalScenes.DashBoardScene;
+import views.globalScenes.*;
 
 public class CheckCashScene {
     private Stage primaryStage;
@@ -38,6 +38,7 @@ public class CheckCashScene {
         mainBox = new VBox();
         mainBox.setSpacing(20);
         mainBox.setStyle("-fx-background-color: #2c3e50; -fx-padding: 30;");
+//        mainBox.setMinSize(ResHelper.getHeight(),ResHelper.getWidth());
         titleLabel = new Label("Cash Register Check");
         titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 24px;");
         Label salesLabel = new Label("Today's Cash Sales:");
@@ -148,7 +149,8 @@ public class CheckCashScene {
         dashboard.show();
     }
 
-    public Scene getScene() {
-        return new Scene(mainBox, 600, 500);
+    public Scene getScene()
+    {
+        return new Scene(mainBox);
     }
 }

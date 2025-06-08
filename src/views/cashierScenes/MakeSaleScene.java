@@ -14,6 +14,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import utils.ResHelper;
 import views.globalScenes.DashBoardScene;
 
 public class MakeSaleScene {
@@ -334,7 +335,7 @@ public class MakeSaleScene {
     }
 
     public Scene getScene() {
-        return new Scene(mainBox, 500, 700);
+        return new Scene(mainBox/*,ResHelper.getHeight(),ResHelper.getWidth()*/);
     }
 
     private static class CartItem {

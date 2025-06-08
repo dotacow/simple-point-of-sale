@@ -18,6 +18,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
+import utils.ResHelper;
 
 public class ManageProductsScene {
 
@@ -55,7 +56,7 @@ public class ManageProductsScene {
         content.getChildren().addAll(topPane, tableView);
         mainLayout.setCenter(content);
 
-        Scene scene = new Scene(mainLayout);
+        Scene scene = new Scene(mainLayout/*,ResHelper.getHeight(),ResHelper.getWidth()*/);
         stage.setScene(scene);
         stage.setTitle("Manage Products");
         stage.show();

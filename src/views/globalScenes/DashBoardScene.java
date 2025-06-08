@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import models.User;
+import utils.ResHelper;
 import views.cashierScenes.CheckCashScene;
 import views.cashierScenes.MakeSaleScene;
 
@@ -29,6 +30,7 @@ public class DashBoardScene
         this.currentUser = currentUser;
         this.controller = new DashboardController();
         this.mainLayout = new BorderPane();
+//        mainLayout.setMinSize(ResHelper.getHeight(),ResHelper.getWidth());
         this.scene = createDashboard();
     }
 
