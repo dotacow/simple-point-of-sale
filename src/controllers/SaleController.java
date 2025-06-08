@@ -14,11 +14,11 @@ SaleController.addSale(sale);
 public class SaleController {
 
     public static void addSale(Sale sale) {
-        String sql = "INSERT INTO sale (usrId, createdAtTime, totalPrice, paymentMethod) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO sale (userId, createdAt, totalPrice, paymentMethod) VALUES (?, ?, ?, ?)";
         try (Connection conn = DBHelper.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, sale.getUsrId());
+            stmt.setInt(1, sale.getUserId());
             stmt.setTimestamp(2, sale.getCreatedAtTime());
             stmt.setFloat(3, sale.getTotalPrice());
             stmt.setString(4, sale.getPaymentMethod().name());
@@ -30,7 +30,7 @@ public class SaleController {
     }
 
     public static void deleteSale(int id) {
-        String sql = "DELETE FROM sale WHERE id = ?";
+        String sql = "DELETE FROM sale WHERE saleId = ?";
         try (Connection conn = DBHelper.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -41,25 +41,8 @@ public class SaleController {
         }
     }
 
-    public static void editSale(Sale sale) {
-        String sql = "UPDATE sale SET usrId = ?, createdAtTime = ?, totalPrice = ?, paymentMethod = ? WHERE id = ?";
-        try (Connection conn = DBHelper.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, sale.getUsrId());
-            stmt.setTimestamp(2, sale.getCreatedAtTime());
-            stmt.setFloat(3, sale.getTotalPrice());
-            stmt.setString(4, sale.getPaymentMethod().name());
-            stmt.setInt(5, sale.getId());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static Sale getSaleById(int id) {
-        String sql = "SELECT * FROM sale WHERE id = ?";
+        String sql = "SELECT * FROM sale WHERE saleId = ?";
         try (Connection conn = DBHelper.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -68,9 +51,9 @@ public class SaleController {
 
             if (rs.next()) {
                 return new Sale(
-                    rs.getInt("id"),
-                    rs.getInt("usrId"),
-                    rs.getTimestamp("createdAtTime"),
+                    rs.getInt("saleId"),
+                    rs.getInt("userId"),
+                    rs.getTimestamp("createdAt"),
                     rs.getFloat("totalPrice"),
                     Sale.PaymentMethod.valueOf(rs.getString("paymentMethod").toUpperCase())
                 );
@@ -92,9 +75,9 @@ public class SaleController {
 
             while (rs.next()) {
                 sales.add(new Sale(
-                    rs.getInt("id"),
-                    rs.getInt("usrId"),
-                    rs.getTimestamp("createdAtTime"),
+                    rs.getInt("saleId"),
+                    rs.getInt("userId"),
+                    rs.getTimestamp("createdAt"),
                     rs.getFloat("totalPrice"),
                     Sale.PaymentMethod.valueOf(rs.getString("paymentMethod").toUpperCase())
                 ));

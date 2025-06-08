@@ -28,7 +28,7 @@ public class User {
         this.pwd = pwd;
         this.usrName = usrName;
     }
-
+    
     public int getId() {
         return id;
     }
