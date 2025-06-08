@@ -14,6 +14,7 @@ import views.globalScenes.SideBarComponent;
 
 import java.sql.Timestamp;
 import java.util.List;
+import utils.ResHelper;
 
 public class ManageSalesScene {
 
@@ -43,7 +44,7 @@ public class ManageSalesScene {
         content.getChildren().add(table);
         layout.setCenter(content);
 
-        stage.setScene(new Scene(layout, 900, 600));
+        stage.setScene(new Scene(layout,stage.getWidth(),stage.getHeight()));
         stage.setTitle("Manage Sales");
         stage.show();
     }
