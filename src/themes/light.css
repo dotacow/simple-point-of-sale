@@ -54,3 +54,50 @@
     -fx-background-color: white;
     -fx-text-fill: #2c3e50;
 }
+
+.make-sale-root {
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 20;
+}
+
+.make-sale-title {
+    -fx-text-fill: #333333;
+    -fx-font-size: 24px;
+}
+
+.make-sale-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 14px;
+}
+
+.make-sale-combo, .make-sale-field, .make-sale-area {
+    -fx-background-color: white;
+    -fx-text-fill: #222222;
+    -fx-border-color: #cccccc;
+}
+
+.make-sale-total {
+    -fx-text-fill: #222222;
+    -fx-font-size: 16px;
+}
+
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-cursor: hand;
+}
+
+.sale-button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.sale-button.hover {
+    -fx-background-color: #388e3c;
+}

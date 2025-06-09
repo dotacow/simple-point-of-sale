@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import utils.ResHelper;
+import utils.ThemeManager;
 import views.globalScenes.DashBoardScene;
 
 public class MakeSaleScene {
@@ -46,109 +47,73 @@ public class MakeSaleScene {
         loadProducts();
     }
 
-    private void createUI() {
-        mainBox = new VBox();
-        mainBox.setSpacing(15);
-        mainBox.setStyle("-fx-background-color: #2c3e50; -fx-padding: 20;");
-        titleLabel = new Label("Make Sale");
-        titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 24px;");
-        Label productLabel = new Label("Select Product:");
-        productLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-        productCombo = new ComboBox<>();
-        productCombo.setStyle("-fx-background-color: #34495e; -fx-text-fill: white;");
-        Label qtyLabel = new Label("Quantity:");
-        qtyLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-        quantityField = new TextField("1");
-        quantityField.setStyle("-fx-background-color: #34495e; -fx-text-fill: white;");
-        addButton = new Button("Add to Cart");
-        addButton.setStyle(
-            "-fx-background-color: transparent; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 15 20; " +
-            "-fx-cursor: hand;"
-        );
-        addButton.setOnAction(e -> addToCart());
-        Label cartLabel = new Label("Shopping Cart:");
-        cartLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-        cartArea = new TextArea();
-        cartArea.setPrefHeight(150);
-        cartArea.setEditable(false);
-        cartArea.setStyle("-fx-background-color: #34495e; -fx-text-fill: white;");
-        totalLabel = new Label("Total: 0.00 JD");
-        totalLabel.setStyle("-fx-text-fill: white; -fx-font-size: 16px;");
-        Label paymentLabel = new Label("Payment Method:");
-        paymentLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-        paymentCombo = new ComboBox<>();
-        paymentCombo.getItems().addAll("Cash", "Credit");
-        paymentCombo.setValue("Cash");
-        paymentCombo.setStyle("-fx-background-color: #34495e; -fx-text-fill: white;");
-        saleButton = new Button("Process Sale");
-        saleButton.setStyle(
-            "-fx-background-color: #2ecc71; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 10 20; " +
-            "-fx-cursor: hand;" +
-            "-fx-background-radius: 5;"
-        );
-        saleButton.setOnMouseEntered(e -> saleButton.setStyle(
-            "-fx-background-color: #27ae60; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 10 20; " +
-            "-fx-cursor: hand;" +
-            "-fx-background-radius: 5;"
-        ));
-        saleButton.setOnMouseExited(e -> saleButton.setStyle(
-            "-fx-background-color: #2ecc71; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 10 20; " +
-            "-fx-cursor: hand;" +
-            "-fx-background-radius: 5;"
-        ));
-        saleButton.setOnAction(e -> processSale());
+ private void createUI() {
+    mainBox = new VBox(15);
+    mainBox.getStyleClass().add("make-sale-root");
 
-        printButton = new Button("Print Invoice");
-        printButton.setStyle(
-            "-fx-background-color: transparent; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 15 20; " +
-            "-fx-cursor: hand;"
-        );
-        printButton.setOnAction(e -> printInvoice());
-        printButton.setDisable(true);
+    titleLabel = new Label("Make Sale");
+    titleLabel.getStyleClass().add("make-sale-title");
 
-        clearButton = new Button("Clear Cart");
-        clearButton.setStyle(
-            "-fx-background-color: transparent; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 15 20; " +
-            "-fx-cursor: hand;"
-        );
-        clearButton.setOnAction(e -> clearCart());
+    Label productLabel = new Label("Select Product:");
+    productLabel.getStyleClass().add("make-sale-label");
 
-        backButton = new Button("Back");
-        backButton.setStyle(
-            "-fx-background-color: transparent; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-padding: 15 20; " +
-            "-fx-cursor: hand;"
-        );
-        backButton.setOnAction(e -> goBack());
+    productCombo = new ComboBox<>();
+    productCombo.getStyleClass().add("make-sale-combo");
 
-        HBox buttonBox = new HBox();
-        buttonBox.setSpacing(10);
-        buttonBox.getChildren().addAll(saleButton, printButton, clearButton, backButton);
-        mainBox.getChildren().addAll(
-            titleLabel, productLabel, productCombo, qtyLabel, quantityField, addButton,
-            cartLabel, cartArea, totalLabel, paymentLabel, paymentCombo, buttonBox
-        );
-    }
+    Label qtyLabel = new Label("Quantity:");
+    qtyLabel.getStyleClass().add("make-sale-label");
+
+    quantityField = new TextField("1");
+    quantityField.getStyleClass().add("make-sale-field");
+
+    addButton = new Button("Add to Cart");
+    addButton.getStyleClass().add("transparent-button");
+    addButton.setOnAction(e -> addToCart());
+
+    Label cartLabel = new Label("Shopping Cart:");
+    cartLabel.getStyleClass().add("make-sale-label");
+
+    cartArea = new TextArea();
+    cartArea.setPrefHeight(150);
+    cartArea.setEditable(false);
+    cartArea.getStyleClass().add("make-sale-area");
+
+    totalLabel = new Label("Total: 0.00 JD");
+    totalLabel.getStyleClass().add("make-sale-total");
+
+    Label paymentLabel = new Label("Payment Method:");
+    paymentLabel.getStyleClass().add("make-sale-label");
+
+    paymentCombo = new ComboBox<>();
+    paymentCombo.getItems().addAll("Cash", "Credit");
+    paymentCombo.setValue("Cash");
+    paymentCombo.getStyleClass().add("make-sale-combo");
+
+    saleButton = new Button("Process Sale");
+    saleButton.getStyleClass().add("sale-button");
+    saleButton.setOnMouseEntered(e -> saleButton.getStyleClass().add("hover"));
+    saleButton.setOnMouseExited(e -> saleButton.getStyleClass().remove("hover"));
+    saleButton.setOnAction(e -> processSale());
+
+    printButton = new Button("Print Invoice");
+    printButton.getStyleClass().add("transparent-button");
+    printButton.setOnAction(e -> printInvoice());
+    printButton.setDisable(true);
+
+    clearButton = new Button("Clear Cart");
+    clearButton.getStyleClass().add("transparent-button");
+    clearButton.setOnAction(e -> clearCart());
+
+    backButton = new Button("Back");
+    backButton.getStyleClass().add("transparent-button");
+    backButton.setOnAction(e -> goBack());
+
+    HBox buttonBox = new HBox(10, saleButton, printButton, clearButton, backButton);
+    mainBox.getChildren().addAll(
+        titleLabel, productLabel, productCombo, qtyLabel, quantityField, addButton,
+        cartLabel, cartArea, totalLabel, paymentLabel, paymentCombo, buttonBox
+    );
+}
 
     private void loadProducts() {
         try {
@@ -335,7 +300,9 @@ public class MakeSaleScene {
     }
 
     public Scene getScene() {
-        return new Scene(mainBox,primaryStage.getWidth(),primaryStage.getHeight());
+        Scene scene = new Scene(mainBox, primaryStage.getWidth(), primaryStage.getHeight());
+        ThemeManager.getInstance().registerScene(scene);
+        return scene;
     }
 
     private static class CartItem {
