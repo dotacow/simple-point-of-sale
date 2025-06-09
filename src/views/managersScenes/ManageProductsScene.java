@@ -18,7 +18,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
-import utils.ResHelper;
+import utils.ThemeManager;
 
 public class ManageProductsScene {
 
@@ -41,7 +41,7 @@ public class ManageProductsScene {
         // Main content (Product management interface)
         VBox content = new VBox(10);
         content.setPadding(new Insets(10));
-        content.setStyle("-fx-background-color: #ecf0f1;");
+        content.getStyleClass().add("manage-products-content");
 
         TableView<Product> tableView = listProductsTable();
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
@@ -56,7 +56,8 @@ public class ManageProductsScene {
         content.getChildren().addAll(topPane, tableView);
         mainLayout.setCenter(content);
 
-        Scene scene = new Scene(mainLayout,stage.getWidth(),stage.getHeight());
+        Scene scene = new Scene(mainLayout, stage.getWidth(), stage.getHeight());
+        ThemeManager.getInstance().registerScene(scene);
         stage.setScene(scene);
         stage.setTitle("Manage Products");
         stage.show();
@@ -101,8 +102,8 @@ public class ManageProductsScene {
             private final HBox pane = new HBox(5, editBtn, deleteBtn);
 
             {
-                editBtn.setStyle("-fx-background-color: #ffc107; -fx-text-fill: black;");
-                deleteBtn.setStyle("-fx-background-color: #dc3545; -fx-text-fill: white;");
+                editBtn.getStyleClass().add("btn-edit");
+                deleteBtn.getStyleClass().add("btn-delete");
 
                 editBtn.setOnAction(e -> {
                     Product product = getTableView().getItems().get(getIndex());

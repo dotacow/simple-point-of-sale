@@ -1,0 +1,237 @@
+@import "base.css";
+
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #2c3e50;
+}
+
+.dashboard-title,
+.section-title,
+.stats-card-value,
+.cash-register-title,
+.cash-register-subtitle,
+.cash-register-summary,
+.cash-register-net {
+    -fx-text-fill: #2c3e50;
+}
+
+.stats-card {
+    -fx-background-color: white;
+}
+
+.stats-card-subtitle {
+    -fx-text-fill: #7f8c8d;
+}
+
+.quick-action {
+    -fx-background-color: white;
+}
+
+.quick-action-desc {
+    -fx-text-fill: #7f8c8d;
+}
+
+/* Hover Effects */
+.stats-card:hover {
+    -fx-background-color: #ecf0f1;
+}
+
+.quick-action:hover {
+    -fx-background-color: #e9fbe7;
+}
+
+.cash-register-refresh-btn {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.cash-register-back-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3498db;
+}
+
+.cash-register-textarea {
+    -fx-background-color: white;
+    -fx-text-fill: #2c3e50;
+}
+
+.make-sale-root {
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 20;
+}
+
+.make-sale-title {
+    -fx-text-fill: #333333;
+    -fx-font-size: 24px;
+}
+
+.make-sale-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 14px;
+}
+
+.make-sale-combo, .make-sale-field, .make-sale-area {
+    -fx-background-color: white;
+    -fx-text-fill: #222222;
+    -fx-border-color: #cccccc;
+}
+
+.make-sale-total {
+    -fx-text-fill: #222222;
+    -fx-font-size: 16px;
+}
+
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-cursor: hand;
+}
+
+.sale-button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.sale-button.hover {
+    -fx-background-color: #388e3c;
+}
+.sidebar {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 20;
+}
+
+.sidebar-separator {
+    -fx-background-color: #d0d0d0;
+}
+
+.sidebar-welcome-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 12px;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-username-label {
+    -fx-text-fill: #222222;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-role-label {
+    -fx-text-fill: #3366cc;
+    -fx-font-size: 12px;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #222222;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-menu-button:hover {
+    -fx-background-color: #d0d0d0;
+}
+
+.sidebar-logout-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-logout-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.manage-products-content {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 10px;
+}
+
+.btn-edit {
+    -fx-background-color: #ffc107;
+    -fx-text-fill: black;
+}
+
+.btn-delete {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+}
+
+.manage-users-content {
+    -fx-background-color: #ecf0f1;
+}
+
+.btn-add-user {
+    -fx-background-color: #27ae60;
+}
+
+.btn-edit {
+    -fx-background-color: #ffc107;
+}
+
+.btn-delete {
+    -fx-background-color: #dc3545;
+}
+
+.btn-save {
+    -fx-background-color: #2980b9;
+}
+
+.main-layout {
+    -fx-background-color: #ecf0f1;
+}
+
+.title-label {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
+    -fx-text-fill: darkblue;
+}
+
+.combo-box {
+    -fx-font-size: 14px;
+}
+
+.stats-table {
+    -fx-font-size: 14px;
+}
+
+.btn {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #2980b9;
+}
+
+.btn-transparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.btn-transparent:hover {
+    -fx-background-color: #bdc3c7;
+}

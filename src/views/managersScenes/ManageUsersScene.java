@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.sql.SQLException;
 import java.util.List;
 import utils.ResHelper;
+import utils.ThemeManager;
 
 public class ManageUsersScene {
 
@@ -30,44 +31,41 @@ public class ManageUsersScene {
     }
 
     public void show() {
-        // Sidebar
         SideBarComponent sidebar = new SideBarComponent(currentUser, stage);
 
         VBox mainContent = new VBox(15);
-//        mainContent.setMinSize(ResHelper.getHeight(),ResHelper.getWidth());
         mainContent.setPadding(new Insets(20));
-        mainContent.setStyle("-fx-background-color: #ecf0f1;");
+        mainContent.getStyleClass().add("manage-users-content");  // CSS class instead of inline bg color
 
         TableView<User> tableView = listUsersTable();
 
-        // Add user button
         Button addButton = new Button("➕ Add User");
-        addButton.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white;");
+        addButton.getStyleClass().add("btn-add-user");  // CSS class for button
         addButton.setOnAction(e -> showAddUserForm(tableView));
 
         VBox topPane = new VBox(10, addButton);
         topPane.setPadding(new Insets(0, 0, 10, 0));
 
-        // Load data
         loadUsers(tableView);
 
         mainContent.getChildren().addAll(topPane, tableView);
 
-        // Layout
         BorderPane mainLayout = new BorderPane();
         mainLayout.setLeft(sidebar.getSidebar());
         mainLayout.setCenter(mainContent);
         mainLayout.setPadding(new Insets(10));
 
-        Scene scene = new Scene(mainLayout,stage.getWidth(),stage.getHeight());//1920
+        Scene scene = new Scene(mainLayout, stage.getWidth(), stage.getHeight());
+        ThemeManager.getInstance().registerScene(scene);
+
         stage.setTitle("Manage Users - " + currentUser.getName());
         stage.setScene(scene);
-//        stage.setMaximized(true);
         stage.show();
     }
 
     private TableView<User> listUsersTable() {
         TableView<User> tableView = new TableView<>();
+        tableView.getStyleClass().add("manage-users-table"); // Add table CSS class
 
         TableColumn<User, Integer> idCol = new TableColumn<>("ID");
         idCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleIntegerProperty(cell.getValue().getId()).asObject());
@@ -88,8 +86,8 @@ public class ManageUsersScene {
             private final HBox pane = new HBox(5, editBtn, deleteBtn);
 
             {
-                editBtn.setStyle("-fx-background-color: #ffc107; -fx-text-fill: black;");
-                deleteBtn.setStyle("-fx-background-color: #dc3545; -fx-text-fill: white;");
+                editBtn.getStyleClass().add("btn-edit");
+                deleteBtn.getStyleClass().add("btn-delete");
 
                 editBtn.setOnAction(e -> {
                     User user = getTableView().getItems().get(getIndex());
@@ -137,7 +135,7 @@ public class ManageUsersScene {
         roleBox.getItems().setAll(Role.values());
 
         Button saveBtn = new Button("Save");
-        saveBtn.setStyle("-fx-background-color: #2980b9; -fx-text-fill: white;");
+        saveBtn.getStyleClass().add("btn-save");
         saveBtn.setOnAction(e -> {
             try {
                 String name = nameField.getText();
@@ -175,7 +173,9 @@ public class ManageUsersScene {
                 saveBtn
         );
         form.setPadding(new Insets(15));
-        formStage.setScene(new Scene(form, 300, 400));
+        Scene scene = new Scene(form, 300, 400);
+        ThemeManager.getInstance().registerScene(scene);
+        formStage.setScene(scene);
         formStage.show();
     }
 
@@ -193,7 +193,7 @@ public class ManageUsersScene {
         roleBox.setValue(user.getRole());
 
         Button saveBtn = new Button("Update");
-        saveBtn.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
+        saveBtn.getStyleClass().add("btn-save");
         saveBtn.setOnAction(e -> {
             try {
                 String name = nameField.getText();
@@ -226,7 +226,9 @@ public class ManageUsersScene {
                 saveBtn
         );
         form.setPadding(new Insets(15));
-        formStage.setScene(new Scene(form, 300, 400));
+        Scene scene = new Scene(form, 300, 400);
+        ThemeManager.getInstance().registerScene(scene);
+        formStage.setScene(scene);
         formStage.show();
     }
 

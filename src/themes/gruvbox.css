@@ -1,0 +1,247 @@
+@import "base.css";
+
+.root {
+    -fx-background-color: #282828;
+    -fx-text-fill: #ebdbb2;
+}
+
+.dashboard-title,
+.section-title,
+.stats-card-value,
+.cash-register-title,
+.cash-register-subtitle,
+.cash-register-summary,
+.cash-register-net {
+    -fx-text-fill: #ebdbb2;
+}
+
+.stats-card {
+    -fx-background-color: #3c3836;
+}
+
+.stats-card-subtitle {
+    -fx-text-fill: #a89984;
+}
+
+.quick-action {
+    -fx-background-color: #3c3836;
+}
+
+.quick-action-desc {
+    -fx-text-fill: #a89984;
+}
+
+/* Hover Effects */
+.stats-card:hover {
+    -fx-background-color: #504945;
+}
+
+.quick-action:hover {
+    -fx-background-color: #504945;
+}
+
+.cash-register-refresh-btn {
+    -fx-background-color: #83a598;
+    -fx-text-fill: #282828;
+}
+
+.cash-register-back-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #83a598;
+}
+
+.cash-register-textarea {
+    -fx-background-color: #3c3836;
+    -fx-text-fill: #ebdbb2;
+}
+
+.make-sale-root {
+    -fx-background-color: #282828;
+    -fx-padding: 20;
+}
+
+.make-sale-title {
+    -fx-text-fill: #ebdbb2;
+    -fx-font-size: 24px;
+}
+
+.make-sale-label {
+    -fx-text-fill: #d5c4a1;
+    -fx-font-size: 14px;
+}
+
+.make-sale-combo, .make-sale-field, .make-sale-area {
+    -fx-background-color: #3c3836;
+    -fx-text-fill: #ebdbb2;
+    -fx-border-color: #504945;
+}
+
+.make-sale-total {
+    -fx-text-fill: #fabd2f;
+    -fx-font-size: 16px;
+}
+
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ebdbb2;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-cursor: hand;
+}
+
+.sale-button {
+    -fx-background-color: #b8bb26;
+    -fx-text-fill: #282828;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.sale-button.hover {
+    -fx-background-color: #575703;
+}
+
+.sidebar {
+    -fx-background-color: #282828;
+    -fx-padding: 20;
+}
+
+.sidebar-separator {
+    -fx-background-color: #3c3836;
+}
+
+.sidebar-welcome-label {
+    -fx-text-fill: #928374;
+    -fx-font-size: 12px;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-username-label {
+    -fx-text-fill: #ebdbb2;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-role-label {
+    -fx-text-fill: #83a598;
+    -fx-font-size: 12px;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ebdbb2;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-menu-button:hover {
+    -fx-background-color: #504945;
+}
+
+.sidebar-logout-button {
+    -fx-background-color: #cc241d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-logout-button:hover {
+    -fx-background-color: #9d1d18;
+}
+.manage-products-content {
+    -fx-background-color: #282828;
+    -fx-padding: 10px;
+}
+
+.btn-edit {
+    -fx-background-color: #fabd2f; /* yellow */
+    -fx-text-fill: #282828;       /* dark text */
+}
+
+.btn-delete {
+    -fx-background-color: #fb4934; /* red */
+    -fx-text-fill: #fbf1c7;        /* light cream */
+}
+
+.manage-users-content {
+    -fx-background-color: #282828;
+    -fx-text-fill: #ebdbb2;
+}
+
+.btn-add-user {
+    -fx-background-color: #98971a;
+    -fx-text-fill: #282828;
+}
+
+.btn-edit {
+    -fx-background-color: #d79921;
+    -fx-text-fill: #282828;
+}
+
+.btn-delete {
+    -fx-background-color: #cc241d;
+    -fx-text-fill: #ebdbb2;
+}
+
+.btn-save {
+    -fx-background-color: #458588;
+    -fx-text-fill: #ebdbb2;
+}
+
+.main-layout {
+    -fx-background-color: #282828;
+}
+
+.title-label {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
+    -fx-text-fill: #fabd2f;
+}
+
+.combo-box {
+    -fx-font-size: 14px;
+    -fx-background-color: #3c3836;
+    -fx-text-fill: #ebdbb2;
+}
+
+.stats-table {
+    -fx-font-size: 14px;
+    -fx-background-color: #3c3836;
+    -fx-text-fill: #ebdbb2;
+}
+
+.btn {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: #fabd2f;
+    -fx-text-fill: #282828;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #d79921;
+}
+
+.btn-transparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ebdbb2;
+}
+
+.btn-transparent:hover {
+    -fx-background-color: #504945;
+}
+
