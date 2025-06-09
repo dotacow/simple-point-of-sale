@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ThemeManager {
     private static ThemeManager instance;
-    private String currentTheme = "light";
+    private String currentTheme = "dark";
     private List<Scene> registeredScenes = new ArrayList<>();
     
     private ThemeManager() {}
@@ -41,7 +41,7 @@ public class ThemeManager {
     private void applyThemeToScene(Scene scene, String theme) {
         // Remove existing theme stylesheets
         scene.getStylesheets().removeIf(s -> 
-            s.contains("light.css") || s.contains("dark.css") || s.contains("gruvbox.css")
+            s.contains("light.css") || s.contains("dark.css") || s.contains("gruvbox.css") || s.contains("nordic.css") || s.contains("cat.css")
         );
         
         // Add new theme stylesheet

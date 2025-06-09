@@ -66,7 +66,7 @@ public class DashBoardScene {
 
     private ComboBox<String> createThemeSwitcher() {
         ComboBox<String> themeBox = new ComboBox<>();
-        themeBox.getItems().addAll("Light", "Dark", "Gruvbox");
+        themeBox.getItems().addAll("Light", "Dark", "Gruvbox","nordic","cat");
         
         // Set current theme as selected
         String currentTheme = themeManager.getCurrentTheme();
