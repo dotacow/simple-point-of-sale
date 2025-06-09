@@ -99,6 +99,59 @@
 }
 
 .sale-button.hover {
-    -fx-background-color: #98971a;
+    -fx-background-color: #575703;
 }
 
+.sidebar {
+    -fx-background-color: #282828;
+    -fx-padding: 20;
+}
+
+.sidebar-separator {
+    -fx-background-color: #3c3836;
+}
+
+.sidebar-welcome-label {
+    -fx-text-fill: #928374;
+    -fx-font-size: 12px;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-username-label {
+    -fx-text-fill: #ebdbb2;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-role-label {
+    -fx-text-fill: #83a598;
+    -fx-font-size: 12px;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.sidebar-menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ebdbb2;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-menu-button:hover {
+    -fx-background-color: #504945;
+}
+
+.sidebar-logout-button {
+    -fx-background-color: #cc241d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-logout-button:hover {
+    -fx-background-color: #9d1d18;
+}

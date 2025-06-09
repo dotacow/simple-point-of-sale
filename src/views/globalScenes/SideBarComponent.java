@@ -7,17 +7,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import views.managersScenes.*;
-import views.cashierScenes.*;
+import utils.ThemeManager;
+import views.cashierScenes.CheckCashScene;
+import views.cashierScenes.MakeSaleScene;
+import views.managersScenes.ManageProductsScene;
+import views.managersScenes.ManageSalesScene;
+import views.managersScenes.ManageUsersScene;
+import views.managersScenes.ViewSalesStatsScene;
 
 /**
  * Sidebar navigation component for the POS system
- *
- * @author dotac
  */
 public class SideBarComponent {
 
@@ -29,7 +29,7 @@ public class SideBarComponent {
         this.currentUser = currentUser;
         this.stage = stage;
         createSidebar();
-//        stage.setMaximized(true);
+        // Register sidebar for theme management
     }
 
     private void createSidebar() {
@@ -37,7 +37,7 @@ public class SideBarComponent {
         sidebar.setPrefWidth(250);
         sidebar.setMinWidth(250);
         sidebar.setMaxWidth(250);
-        sidebar.setStyle("-fx-background-color: #2c3e50; -fx-padding: 20;");
+        sidebar.getStyleClass().add("sidebar");
         sidebar.setSpacing(5);
 
         // User info section
@@ -45,7 +45,7 @@ public class SideBarComponent {
 
         // Add separator
         Separator separator = new Separator();
-        separator.setStyle("-fx-background-color: #34495e;");
+        separator.getStyleClass().add("sidebar-separator");
         sidebar.getChildren().add(separator);
 
         // Menu items based on user role
@@ -61,16 +61,13 @@ public class SideBarComponent {
         userInfo.setAlignment(Pos.CENTER_LEFT);
 
         Label welcomeLabel = new Label("Welcome");
-        welcomeLabel.setTextFill(Color.LIGHTGRAY);
-        welcomeLabel.setFont(Font.font("Arial", 12));
+        welcomeLabel.getStyleClass().add("sidebar-welcome-label");
 
         Label userNameLabel = new Label(currentUser.getName());
-        userNameLabel.setTextFill(Color.WHITE);
-        userNameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        userNameLabel.getStyleClass().add("sidebar-username-label");
 
         Label roleLabel = new Label(currentUser.getRole().toString());
-        roleLabel.setTextFill(Color.LIGHTBLUE);
-        roleLabel.setFont(Font.font("Arial", 12));
+        roleLabel.getStyleClass().add("sidebar-role-label");
 
         userInfo.getChildren().addAll(welcomeLabel, userNameLabel, roleLabel);
         sidebar.getChildren().add(userInfo);
@@ -83,58 +80,28 @@ public class SideBarComponent {
         // Manager-only menu items
         if (currentUser.getRole() == User.Role.MANAGER) {
             menuSection.getChildren().addAll(
-                    createMenuButton("📦 Manage Products", "Manage Products", this::navigateToManageProducts),
-                    createMenuButton("🛒 Manage Sales", "Manage Sales", this::navigateToManageSales),
-                    createMenuButton("📈 Sales Stats", "Sales Statistics", this::navigateToSalesStats),
-                    createMenuButton("👥 Manage Users", "Manage Users", this::navigateToManageUsers)
+                createMenuButton("📦 Manage Products", this::navigateToManageProducts),
+                createMenuButton("🛒 Manage Sales", this::navigateToManageSales),
+                createMenuButton("📈 Sales Stats", this::navigateToSalesStats),
+                createMenuButton("👥 Manage Users", this::navigateToManageUsers)
             );
         }
 
         // Common menu items for all users
         menuSection.getChildren().addAll(
-                createMenuButton("📊 Dashboard", "Dashboard", this::navigateToDashboard),
-                createMenuButton("💰 Make Sale", "Make Sale", this::navigateToMakeSale),
-                createMenuButton("💵 Check Cash", "Check Cash", this::navigateToCheckCash)
+            createMenuButton("📊 Dashboard", this::navigateToDashboard),
+            createMenuButton("💰 Make Sale", this::navigateToMakeSale),
+            createMenuButton("💵 Check Cash", this::navigateToCheckCash)
         );
 
         sidebar.getChildren().add(menuSection);
     }
 
-    private Button createMenuButton(String text, String tooltip, Runnable action) {
+    private Button createMenuButton(String text, Runnable action) {
         Button button = new Button(text);
         button.setMaxWidth(Double.MAX_VALUE);
-        button.setAlignment(Pos.CENTER_LEFT);
-        button.setStyle(
-                "-fx-background-color: transparent; "
-                + "-fx-text-fill: white; "
-                + "-fx-font-size: 14px; "
-                + "-fx-padding: 15 20; "
-                + "-fx-cursor: hand;"
-        );
-
-        // Hover effects
-        button.setOnMouseEntered(e
-                -> button.setStyle(
-                        "-fx-background-color: #34495e; "
-                        + "-fx-text-fill: white; "
-                        + "-fx-font-size: 14px; "
-                        + "-fx-padding: 15 20; "
-                        + "-fx-cursor: hand;"
-                )
-        );
-
-        button.setOnMouseExited(e
-                -> button.setStyle(
-                        "-fx-background-color: transparent; "
-                        + "-fx-text-fill: white; "
-                        + "-fx-font-size: 14px; "
-                        + "-fx-padding: 15 20; "
-                        + "-fx-cursor: hand;"
-                )
-        );
-
+        button.getStyleClass().add("sidebar-menu-button");
         button.setOnAction(e -> action.run());
-
         return button;
     }
 
@@ -144,44 +111,17 @@ public class SideBarComponent {
         logoutSection.setAlignment(Pos.BOTTOM_LEFT);
 
         Separator separator = new Separator();
-        separator.setStyle("-fx-background-color: #34495e;");
+        separator.getStyleClass().add("sidebar-separator");
 
-        Button logoutButton = createMenuButton("🚪 Logout", "Logout", this::logout);
-        logoutButton.setStyle(
-                "-fx-background-color: #e74c3c; "
-                + "-fx-text-fill: white; "
-                + "-fx-font-size: 14px; "
-                + "-fx-padding: 15 20; "
-                + "-fx-cursor: hand;"
-        );
-
-        logoutButton.setOnMouseEntered(e
-                -> logoutButton.setStyle(
-                        "-fx-background-color: #c0392b; "
-                        + "-fx-text-fill: white; "
-                        + "-fx-font-size: 14px; "
-                        + "-fx-padding: 15 20; "
-                        + "-fx-cursor: hand;"
-                )
-        );
-
-        logoutButton.setOnMouseExited(e
-                -> logoutButton.setStyle(
-                        "-fx-background-color: #e74c3c; "
-                        + "-fx-text-fill: white; "
-                        + "-fx-font-size: 14px; "
-                        + "-fx-padding: 15 20; "
-                        + "-fx-cursor: hand;"
-                )
-        );
+        Button logoutButton = createMenuButton("🚪 Logout", this::logout);
+        logoutButton.getStyleClass().add("sidebar-logout-button");
 
         logoutSection.getChildren().addAll(separator, logoutButton);
         sidebar.getChildren().add(logoutSection);
     }
 
-    // Navigation methods - now using SceneManager
+    // Navigation methods
     private void navigateToDashboard() {
-        System.out.println("Navigate to Dashboard");
         new DashBoardScene(stage, currentUser).show();
     }
 
@@ -194,7 +134,6 @@ public class SideBarComponent {
     }
 
     private void navigateToSalesStats() {
-        System.out.println("Navigate to Sales Stats");
         stage.setScene(new ViewSalesStatsScene(stage, currentUser).getScene());
         stage.setTitle("Sale reports");
         stage.show();
@@ -205,28 +144,21 @@ public class SideBarComponent {
     }
 
     private void navigateToMakeSale() {
-        System.out.println("Navigate to Make Sale");
-        MakeSaleScene makeSaleScene = new MakeSaleScene(stage, currentUser);
-        stage.setScene(makeSaleScene.getScene());
+        stage.setScene(new MakeSaleScene(stage, currentUser).getScene());
         stage.setTitle("Process New Sale");
         stage.show();
     }
 
     private void navigateToCheckCash() {
-        System.out.println("Navigate to Check Cash");
-        CheckCashScene checkCashScene = new CheckCashScene(stage, currentUser);
-        stage.setScene(checkCashScene.getScene());
+        stage.setScene(new CheckCashScene(stage, currentUser).getScene());
         stage.setTitle("Cash Register Check");
         stage.show();
-
     }
 
     private void logout() {
-        System.out.println("Logout");
         new LoginView(stage).show();
     }
 
-    // Getter for the sidebar component
     public VBox getSidebar() {
         return sidebar;
     }
