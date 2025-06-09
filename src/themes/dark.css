@@ -158,3 +158,19 @@
 .sidebar-logout-button:hover {
     -fx-background-color: #c0392b;
 }
+.manage-products-content {
+    -fx-background-color: #282828;
+    -fx-padding: 10px;
+}
+
+.btn-edit {
+    -fx-background-color: #fabd2f; /* yellow */
+    -fx-text-fill: #282828;       /* dark text */
+}
+
+.btn-delete {
+    -fx-background-color: #fb4934; /* red */
+    -fx-text-fill: #fbf1c7;        /* light cream */
+}
+
+

@@ -14,7 +14,7 @@ import views.globalScenes.SideBarComponent;
 
 import java.sql.Timestamp;
 import java.util.List;
-import utils.ResHelper;
+import utils.ThemeManager;
 
 public class ManageSalesScene {
 
@@ -28,7 +28,9 @@ public class ManageSalesScene {
     }
 
     public void show() {
-        BorderPane layout = new BorderPane();
+       BorderPane layout = new BorderPane();
+       Scene scene  = new Scene(layout, stage.getWidth(), stage.getHeight());
+       ThemeManager.getInstance().registerScene(scene);
 
         // Sidebar
         SideBarComponent sidebar = new SideBarComponent(currentUser, stage);
@@ -37,6 +39,7 @@ public class ManageSalesScene {
         // Content
         VBox content = new VBox(10);
         content.setPadding(new Insets(10));
+        content.getStyleClass().add("manage-sales-content");  // Add CSS class here
 
         TableView<Sale> table = listSalesTable();
         loadSales(table);
@@ -44,7 +47,7 @@ public class ManageSalesScene {
         content.getChildren().add(table);
         layout.setCenter(content);
 
-        stage.setScene(new Scene(layout,stage.getWidth(),stage.getHeight()));
+        stage.setScene(scene);
         stage.setTitle("Manage Sales");
         stage.show();
     }
@@ -76,7 +79,7 @@ public class ManageSalesScene {
             private final Button deleteBtn = new Button("Delete");
 
             {
-                deleteBtn.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                deleteBtn.getStyleClass().add("btn-delete");  // Add CSS class here
                 deleteBtn.setOnAction(e -> {
                     Sale sale = getTableView().getItems().get(getIndex());
 
@@ -97,11 +100,7 @@ public class ManageSalesScene {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(deleteBtn);
-                }
+                setGraphic(empty ? null : deleteBtn);
             }
         });
 
@@ -110,7 +109,7 @@ public class ManageSalesScene {
     }
 
     private void loadSales(TableView<Sale> table) {
-        List<Sale> sales = controller.getAllSales(); // You'll implement this
+        List<Sale> sales = controller.getAllSales();
         ObservableList<Sale> data = FXCollections.observableArrayList(sales);
         table.setItems(data);
     }
