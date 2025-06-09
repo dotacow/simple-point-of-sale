@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.User;
 import utils.CSVExporter;
+import views.globalScenes.DashBoardScene;
 
 import java.io.File;
 
@@ -58,7 +59,6 @@ public class ViewSalesStatsScene {
         exportButton.setStyle("-fx-background-color: #3498db; -fx-background-radius: 8;");
         exportButton.setOnMouseEntered(e -> exportButton.setStyle("-fx-background-color: #2980b9; -fx-background-radius: 8;"));
         exportButton.setOnMouseExited(e -> exportButton.setStyle("-fx-background-color: #3498db; -fx-background-radius: 8;"));
-
         exportButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save Sales Report");
@@ -70,10 +70,22 @@ public class ViewSalesStatsScene {
             }
         });
 
+        // Back button
+        Button backButton = new Button("← Back");
+        backButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        backButton.setTextFill(Color.BLACK);
+        backButton.setStyle("-fx-background-color: transparent;");
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #bdc3c7;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: transparent;"));
+        backButton.setOnAction(e -> {
+            DashBoardScene dashboard = new DashBoardScene(primaryStage, currentUser);
+            dashboard.show();
+        });
+
         // Handle range change
         timeRangeCombo.setOnAction(e -> updateTable(statsTable, timeRangeCombo.getValue()));
 
-        HBox header = new HBox(20, timeRangeCombo, exportButton);
+        HBox header = new HBox(20, backButton, timeRangeCombo, exportButton);
         header.setAlignment(Pos.CENTER_LEFT);
 
         content.getChildren().addAll(title, header, statsTable);
