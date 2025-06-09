@@ -12,8 +12,8 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import models.User;
 import utils.ResHelper;
-import views.cashierScenes.CheckCashScene;
-import views.cashierScenes.MakeSaleScene;
+import views.cashierScenes.*;
+import views.managersScenes.*;
 
 public class DashBoardScene
 {
@@ -135,13 +135,13 @@ public class DashBoardScene
         HBox actions = new HBox(15);
         actions.setAlignment(Pos.CENTER_LEFT);
 
-        actions.getChildren().addAll(
-            createQuickActionButton("➕ Add Product", "Quickly add new inventory", "#27ae60"),
-            createQuickActionButton("📊 View Sales", "Check today's sales", "#3498db"),
-            createQuickActionButton("💵 Check Cash", "Review cash drawer", "#f39c12"),
-            createQuickActionButton("📈 Generate Report", "Create sales report", "#9b59b6")
-        );
-
+        if (User.Role.MANAGER == currentUser.getRole())
+            actions.getChildren().addAll(
+                createQuickActionButton("➕ Add Product", "Quickly add new inventory", "#27ae60"),
+    //            createQuickActionButton("📊 View Sales", "Check today's sales", "#3498db"), I just realized this is literally the check cash, will keep removed if nothing breaks
+                createQuickActionButton("📈 Generate Report", "Create sales report", "#9b59b6")
+            );
+        actions.getChildren().addAll(createQuickActionButton("💵 Check Cash", "Review cash drawer", "#f39c12"));
         section.getChildren().addAll(sectionTitle, actions);
         return section;
     }
@@ -178,12 +178,19 @@ public class DashBoardScene
 
         action.setOnMouseClicked(e -> {
             System.out.println("Clicked: " + title);
-            // TODO navigation here
              if ("💵 Check Cash".equals(title)) {
                 CheckCashScene checkCashScene = new CheckCashScene(stage, currentUser);
                 stage.setScene(checkCashScene.getScene());
                 stage.setTitle("Cash Register Check");
             }
+             else if ("➕ Add Product".equals(title))
+                new ManageProductsScene(stage, currentUser).show();
+             else if ("📈 Generate Report".equals(title))
+             {
+                 stage.setScene(new ViewSalesStatsScene(stage, currentUser).getScene());
+                 stage.setTitle("Sales report- quick action");
+                 stage.show();
+             }
         });
 
         return action;
