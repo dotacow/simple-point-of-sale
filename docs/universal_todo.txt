@@ -3,7 +3,10 @@
 
 
 	GLOBAL RIZZ:
-	1920x1080
+	stage.getwidth&stage.getheight() (please maintain)
+
+o	Allow users to customize their home page layout or preferences, such as theme selection or Stage properties.[]//SHISHANO PLZ
+
 ### PAGES/SCENES ###
 @@GLOBAL SCENES:
 1- SIDEBAR SCENE
@@ -25,9 +28,8 @@
 @@
 3-DASHBOARD
 	-inventory stats
-	-sales stats (todo)
-	-employee stats []// kittaneh
-	-quick action (sales report, add all other exiting scnes) (todo) []//kittaneh
+	-sales stats[x]
+	-quick actions (other exiting scnes)[x]//kittaneh
 	UI[x] //kittaneh
 	FUNCTIONALITY [x] //
 @@
@@ -48,9 +50,9 @@
 
 @@
 6-VIEW SALES STATS
-	-option to export as csv(excel)
-	UI[] // kittaneh
-	FUNCTIONALITY [] //
+	-option to export as csv(excel) [x]
+	UI[x] // kittaneh
+	FUNCTIONALITY [x] //
 @@
 7- MANAGE USERS
 	-add users
@@ -64,7 +66,7 @@
 8-MAKE SALE //HAMZAH
 	-PRINT INVOICE (stick in alert/popup?)
 		- LIST OF ITEMS[]
-	- scan barcode []
+	- scan barcode [] (if we have time.)
 	UI[X] //
 	FUNCTIONALITY [X] //
 	STYLING [X]

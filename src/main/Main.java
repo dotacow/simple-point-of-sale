@@ -2,10 +2,7 @@ package main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import utils.ResHelper;
-
 import views.globalScenes.*;
-import views.managersScenes.ManageProductsScene;
 /**
  *
  * @author dotacow  
