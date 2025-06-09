@@ -15,8 +15,8 @@ public class Main extends Application
         @Override
     public void start(Stage primaryStage)
     {
-        primaryStage.setMinHeight(ResHelper.getHeight());
-        primaryStage.setMinWidth(ResHelper.getWidth());
+//        primaryStage.setMinHeight(ResHelper.getHeight());
+//        primaryStage.setMinWidth(ResHelper.getWidth());
         new LoginView(primaryStage).show();   
     }
   
