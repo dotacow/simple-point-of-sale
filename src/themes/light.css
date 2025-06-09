@@ -189,3 +189,49 @@
 .btn-save {
     -fx-background-color: #2980b9;
 }
+
+.main-layout {
+    -fx-background-color: #ecf0f1;
+}
+
+.title-label {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
+    -fx-text-fill: darkblue;
+}
+
+.combo-box {
+    -fx-font-size: 14px;
+}
+
+.stats-table {
+    -fx-font-size: 14px;
+}
+
+.btn {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #2980b9;
+}
+
+.btn-transparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.btn-transparent:hover {
+    -fx-background-color: #bdc3c7;
+}

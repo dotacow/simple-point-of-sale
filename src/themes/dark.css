@@ -198,3 +198,53 @@
     -fx-background-color: #2980b9;
     -fx-text-fill: white;
 }
+
+.main-layout {
+    -fx-background-color: #2c3e50;
+}
+
+.title-label {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
+    -fx-text-fill: #ecf0f1;
+}
+
+.combo-box {
+    -fx-font-size: 14px;
+    -fx-background-color: #34495e;
+    -fx-text-fill: #ecf0f1;
+}
+
+.stats-table {
+    -fx-font-size: 14px;
+    -fx-background-color: #34495e;
+    -fx-text-fill: #ecf0f1;
+}
+
+.btn {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #3498db;
+}
+
+.btn-transparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1;
+}
+
+.btn-transparent:hover {
+    -fx-background-color: #7f8c8d;
+}
