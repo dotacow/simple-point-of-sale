@@ -1,0 +1,105 @@
+/* base.css */
+
+.root {
+    -fx-font-family: "Arial";
+    -fx-padding: 10;
+}
+
+/* Titles */
+.dashboard-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Stats Cards */
+.stats-card {
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-pref-width: 200px;
+    -fx-pref-height: 120px;
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+.stats-card-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.stats-card-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.stats-card-subtitle {
+    -fx-font-size: 12px;
+}
+
+/* Quick Actions */
+.quick-action {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-pref-width: 180px;
+    -fx-pref-height: 80px;
+    -fx-padding: 20;
+}
+
+.quick-action-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.quick-action-desc {
+    -fx-font-size: 11px;
+    -fx-wrap-text: true;
+}
+
+.theme-switcher {
+    -fx-font-size: 14px;
+    -fx-pref-width: 120px;
+}
+
+/* Cash Register */
+.cash-register-title {
+    -fx-font-size: 24px;
+}
+
+.cash-register-subtitle {
+    -fx-font-size: 16px;
+}
+
+.cash-register-textarea {
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+.cash-register-summary {
+    -fx-font-size: 16px;
+}
+
+.cash-register-net {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Stats card types – unique colors per card */
+.stats-card-inventory .stats-card-title { -fx-text-fill: #3498db; }
+.stats-card-stock     .stats-card-title { -fx-text-fill: #f39c12; }
+.stats-card-sales     .stats-card-title { -fx-text-fill: #2ecc71; }
+.stats-card-employees .stats-card-title { -fx-text-fill: #e74c3c; }
+
+/* Quick action types */
+.quick-action-add-product       { -fx-border-color: #27ae60; }
+.quick-action-add-product .quick-action-title { -fx-text-fill: #27ae60; }
+
+.quick-action-generate-report       { -fx-border-color: #9b59b6; }
+.quick-action-generate-report .quick-action-title { -fx-text-fill: #9b59b6; }
+
+.quick-action-check-cash       { -fx-border-color: #f39c12; }
+.quick-action-check-cash .quick-action-title { -fx-text-fill: #f39c12; }

@@ -1,0 +1,56 @@
+@import "base.css";
+
+.root {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #f5f5f5;
+}
+
+.dashboard-title,
+.section-title,
+.stats-card-value,
+.cash-register-title,
+.cash-register-subtitle,
+.cash-register-summary,
+.cash-register-net {
+    -fx-text-fill: #f5f5f5;
+}
+
+.stats-card {
+    -fx-background-color: #2c2c2c;
+}
+
+.stats-card-subtitle {
+    -fx-text-fill: #cccccc;
+}
+
+.quick-action {
+    -fx-background-color: #2c2c2c;
+}
+
+.quick-action-desc {
+    -fx-text-fill: #cccccc;
+}
+
+/* Hover Effects */
+.stats-card:hover {
+    -fx-background-color: #383838;
+}
+
+.quick-action:hover {
+    -fx-background-color: #333333;
+}
+
+.cash-register-refresh-btn {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.cash-register-back-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3498db;
+}
+
+.cash-register-textarea {
+    -fx-background-color: #333333;
+    -fx-text-fill: #f5f5f5;
+}
