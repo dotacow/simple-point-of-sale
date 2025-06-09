@@ -169,3 +169,23 @@
     -fx-background-color: #dc3545;
     -fx-text-fill: white;
 }
+
+.manage-users-content {
+    -fx-background-color: #ecf0f1;
+}
+
+.btn-add-user {
+    -fx-background-color: #27ae60;
+}
+
+.btn-edit {
+    -fx-background-color: #ffc107;
+}
+
+.btn-delete {
+    -fx-background-color: #dc3545;
+}
+
+.btn-save {
+    -fx-background-color: #2980b9;
+}
