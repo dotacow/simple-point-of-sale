@@ -195,7 +195,9 @@ public class SideBarComponent {
 
     private void navigateToSalesStats() {
         System.out.println("Navigate to Sales Stats");
-        //        sceneManager.showSalesStats();
+        stage.setScene(new ViewSalesStatsScene(stage, currentUser).getScene());
+        stage.setTitle("Sale reports");
+        stage.show();
     }
 
     private void navigateToManageUsers() {
