@@ -208,9 +208,11 @@ public class ManageProductsScene {
         );
         form.setPadding(new Insets(15));
 
-        Scene scene = new Scene(form, stage.getWidth(), stage.getHeight());
+//        Scene scene = new Scene(form, stage.getWidth(), stage.getHeight());
+        Scene scene = new Scene(form, 800,500);
         formStage.setScene(scene);
         formStage.show();
+        formStage.toFront();
     }
 
     private void showEditProductForm(Product product, TableView<Product> tableView) {

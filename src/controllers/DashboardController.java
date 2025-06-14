@@ -9,22 +9,22 @@ import java.sql.SQLException;
 public class DashboardController {
 
     public static int getTotalProducts() {
-        String query = "SELECT COUNT(*) FROM PRODUCT";
+        String query = "SELECT COUNT(*) FROM product";
         return executeCountQuery(query);
     }
 
     public static int getTotalItemsInStock() {
-        String query = "SELECT SUM(StockQuantity) FROM PRODUCT";
+        String query = "SELECT SUM(StockQuantity) FROM product";
         return executeCountQuery(query);
     }
 
     public static double getTodaySalesTotal() {
-        String query = "SELECT SUM(TotalPrice) FROM SALE WHERE DATE(CreatedAt) = CURRENT_DATE";
+        String query = "SELECT SUM(TotalPrice) FROM sale WHERE DATE(CreatedAt) = CURRENT_DATE";
         return executeSumQuery(query);
     }
 
     public static int getActiveEmployees() {
-        String query = "SELECT COUNT(*) FROM USER WHERE Role = 'Cashier' OR Role = 'Manager'";
+        String query = "SELECT COUNT(*) FROM user WHERE Role = 'Cashier' OR Role = 'Manager'";
         return executeCountQuery(query);
     }
 

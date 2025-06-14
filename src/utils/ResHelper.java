@@ -12,14 +12,17 @@ import javafx.geometry.Rectangle2D;
  *
  * @author dotac
  */
-public class ResHelper {
+public class ResHelper{
+    
 static Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
  public static double getWidth()
  {
-     return screenBounds.getWidth();
+     return 1920;
+//     return screenBounds.getWidth();
  }
  public static double getHeight()
  {
-     return screenBounds.getHeight();
+     return 1080;
+//     return screenBounds.getHeight();
  }
 }

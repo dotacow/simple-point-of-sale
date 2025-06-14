@@ -71,7 +71,7 @@ public class StatisticsController {
             case "Today" -> {
                 query = """
                         SELECT DATE(CreatedAt) AS day, COUNT(*) AS sales_count, SUM(TotalPrice) AS revenue
-                        FROM SALE
+                        FROM sale
                         WHERE DATE(CreatedAt) = ?
                         GROUP BY day
                         ORDER BY day DESC;
@@ -80,7 +80,7 @@ public class StatisticsController {
             case "This Week" -> {
                 query = """
                         SELECT DATE(CreatedAt) AS day, COUNT(*) AS sales_count, SUM(TotalPrice) AS revenue
-                        FROM SALE
+                        FROM sale
                         WHERE CreatedAt >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY)
                         GROUP BY day
                         ORDER BY day DESC;
@@ -89,7 +89,7 @@ public class StatisticsController {
             case "This Month" -> {
                 query = """
                         SELECT DATE(CreatedAt) AS day, COUNT(*) AS sales_count, SUM(TotalPrice) AS revenue
-                        FROM SALE
+                        FROM sale
                         WHERE YEAR(CreatedAt) = YEAR(CURDATE()) AND MONTH(CreatedAt) = MONTH(CURDATE())
                         GROUP BY day
                         ORDER BY day DESC;
@@ -98,7 +98,7 @@ public class StatisticsController {
             case "This Year" -> {
                 query = """
                         SELECT DATE_FORMAT(CreatedAt, '%Y-%m') AS month, COUNT(*) AS sales_count, SUM(TotalPrice) AS revenue
-                        FROM SALE
+                        FROM sale
                         WHERE YEAR(CreatedAt) = YEAR(CURDATE())
                         GROUP BY month
                         ORDER BY month DESC;
