@@ -11,13 +11,12 @@ A lightweight JavaFX-based Point of Sale system connected to a MySQL database. B
 
 ### 🔐 Login Screen
 ![Login Screen](screenshots/login.png)
+> Login Screen
 
 ### 📊 Dashboard
 ![Manger Dashboard Dark](screenshots/dashbored_manager.png)
 ![Manger Dashboard Light](screenshots/dash_manager_light.png)
 
-### 💰 Make Sale
-![Make Sale](screenshots/make-sale.png)
 
 ### 🧑🏻 Manage Users
 ![Manage Users](screenshots/manage_users.png)
