@@ -42,6 +42,37 @@ A lightweight JavaFX-based Point of Sale system connected to a MySQL database. B
 
 ---
 
+## 👥 Contributors
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/dotacow">
+        <img src="https://avatars.githubusercontent.com/dotacow" width="100px;" alt="Yousef Kitaneh"/><br />
+        <sub><b>Yousef Kitaneh</b></sub>
+      </a><br />
+      👨‍💻 Developer
+    </td>
+    <td align="center">
+      <a href="https://github.com/hamza10755">
+        <img src="https://avatars.githubusercontent.com/hamza10755" width="100px;" alt="Hamza Tarek"/><br />
+        <sub><b>Hamza Tarek</b></sub>
+      </a><br />
+      👨‍💻 Developer
+    </td>
+    <td align="center">
+      <a href="https://github.com/YousefKurchaloy">
+        <img src="https://avatars.githubusercontent.com/YousefKurchaloy" width="100px;" alt="Yousef Alshishani"/><br />
+        <sub><b>Yousef Alshishani</b></sub>
+      </a><br />
+      👨‍💻 Developer
+    </td>
+  </tr>
+</table>
+
+
+---
+
 ## 📁 Project Structure
 
 ```bash
