@@ -27,6 +27,33 @@ A lightweight JavaFX-based Point of Sale system connected to a MySQL database. B
 
 ---
 
+## 📊 Diagrams
+
+### 🧩 Use Case Diagram
+
+The Use Case Diagram outlines the main user interactions with the system, including both cashier and manager roles.
+
+![Use Case Diagram](docs/POS_Usecase_Diagram.png)
+
+> 📌 **Actors:**  
+> - Cashier: Performs sales and checks cash.  
+> - Manager: Manages users, products, and views sales/statistics.
+
+---
+
+### 🗃️ ER (Entity-Relationship) Diagram
+
+The ER Diagram showcases the relationships between key entities in the system such as `User`, `Sale`, and `Product`.
+
+![ER Diagram](docs/ER_Diagram.png)
+
+> 📌 **Entities & Relationships:**  
+> - Each `Sale` is linked to a single `User`.  
+> - Each `Sale` may consist of multiple `Product` entries.  
+> - `User` has `Role` (Cashier or Manager).
+
+---
+
 ## 👥 Contributors
 
 <table>
