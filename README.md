@@ -5,21 +5,6 @@ A lightweight JavaFX-based Point of Sale system connected to a MySQL database. B
 > ✅ Developed as a final project for the **Object Oriented Programming 2** course at **Applied Science University, Jordan**.  
 > 🧑‍🏫 Supervised by **Dr. Radwan Batieha**.
 
----
-
-## 📸 Screenshots
-
-### 🔐 Login Screen
-![Login Screen](screenshots/login.png)
-
-### 📊 Dashboard
-![Manger Dashboard Dark](screenshots/dashbored_manager.png)
-![Manger Dashboard Light](screenshots/dash_manager_light.png)
-
-### 🧑🏻 Manage Users
-![Manage Users](screenshots/manage_users.png)
----
-
 ## 🔧 Features
 
 - 👤 **User Authentication** – Login system with roles.
@@ -70,6 +55,19 @@ A lightweight JavaFX-based Point of Sale system connected to a MySQL database. B
   </tr>
 </table>
 
+---
+
+## 📸 Screenshots
+
+### 🔐 Login Screen
+![Login Screen](screenshots/login.png)
+
+### 📊 Dashboard
+![Manger Dashboard Dark](screenshots/dashbored_manager.png)
+![Manger Dashboard Light](screenshots/dash_manager_light.png)
+
+### 🧑🏻 Manage Users
+![Manage Users](screenshots/manage_users.png)
 
 ---
 
