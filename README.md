@@ -38,7 +38,7 @@ The Use Case Diagram outlines the main user interactions with the system, includ
 > 📌 **Actors:**  
 > - Cashier: Performs sales and checks cash.  
 > - Manager: Manages users, products, and views sales/statistics.
-
+---
 
 ### 🗃️ ER (Entity-Relationship) Diagram
 
