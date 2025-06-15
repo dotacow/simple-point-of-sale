@@ -1,48 +1,37 @@
-# Simple Point of Sale (POS) System  
-> JavaFX + MySQL | OOP2 Project – Applied Science University
+# 🧾 SimplePointOfSale
 
-## 📚 Project Overview
+A lightweight JavaFX-based Point of Sale system connected to a MySQL database. Built for managing product sales, users, and analytics through a clean, modular interface.
 
-This is a desktop-based **Point of Sale (POS)** system built using **JavaFX** for the GUI and **MySQL** for persistent data storage. It was created as a semester project for the **Object Oriented Programming 2 (OOP2)** course at Applied Science University, Jordan.
-
-The system enables basic sales management, product inventory handling, and user authentication. Designed with modular and object-oriented architecture, this project demonstrates practical applications of Java's OOP features, JavaFX interface design, and integration with SQL databases.
-
-> 🧑‍🏫 **Supervisor**: Dr. Radwan Batieha  
-> 🎓 **Course**: Object Oriented Programming 2 (OOP2)  
-> 🏫 **University**: Applied Science University
+> ✅ Developed as a final project for the **Object Oriented Programming 2** course at **Applied Science University, Jordan**.  
+> 🧑‍🏫 Supervised by **Dr. Radwan Batieha**.
 
 ---
 
-## ✨ Features
+## 📸 Screenshots
 
-### 🔐 User Authentication
-- Login with username and password
-- Role-based access (Admin vs Sales Staff)
-
-### 📦 Product Management
-- Add, edit, delete, and list products
-- Image support for products (optional)
-- Quantity and price tracking
-
-### 💵 Sales Management
-- Create sales transactions
-- Display and manage previous sales
-- Delete a sale (with confirmation and disclaimer)
-
-### 🧑 User Management
-- List and manage registered users (admin only)
+> _You can insert screenshots of login, dashboard, and manage scenes here._
 
 ---
 
-## 🧰 Technologies Used
+## 🔧 Features
 
-| Tech          | Description                                |
-|---------------|--------------------------------------------|
-| Java          | Core language, using OOP principles        |
-| JavaFX        | GUI framework                              |
-| MySQL         | Relational database                        |
-| JDBC          | Java Database Connectivity API             |
-| Scene Builder | (optional) FXML UI prototyping             |
+- 👤 **User Authentication** – Login system with roles.
+- 🛍️ **Product Management** – Add, update, and delete products.
+- 💸 **Sales Management** – Record and delete sales transactions.
+- 📊 **Statistics Dashboard** – View sales statistics per user/date.
+- 🎨 **Theme Switcher** – Supports multiple CSS themes (e.g. Dark, Nordic, Gruvbox).
+- 📤 **Export to CSV** – Export tables to CSV files.
+- 🧩 **Modular MVC Architecture**
+
+---
+
+## 🧪 Technologies Used
+
+- **JavaFX** – UI framework.
+- **MySQL** – Relational database.
+- **JDBC** – Database connection.
+- **CSS** – Custom themes.
+- **NetBeans** – Development environment.
 
 ---
 
